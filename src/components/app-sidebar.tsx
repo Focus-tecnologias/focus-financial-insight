@@ -1,3 +1,4 @@
+import focusLogo from "@/assets/focus-logo.png";
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   LayoutDashboard,
