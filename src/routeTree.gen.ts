@@ -9,8 +9,146 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UsuariosRouteImport } from './routes/usuarios'
+import { Route as RelatoriosRouteImport } from './routes/relatorios'
+import { Route as ProjetosRouteImport } from './routes/projetos'
+import { Route as PermissoesRouteImport } from './routes/permissoes'
+import { Route as LogsRouteImport } from './routes/logs'
+import { Route as IntegracoesRouteImport } from './routes/integracoes'
+import { Route as IndicadoresRouteImport } from './routes/indicadores'
+import { Route as IaFinanceiraRouteImport } from './routes/ia-financeira'
+import { Route as FornecedoresRouteImport } from './routes/fornecedores'
+import { Route as FluxoDeCaixaRouteImport } from './routes/fluxo-de-caixa'
+import { Route as DreRouteImport } from './routes/dre'
+import { Route as DocumentosRouteImport } from './routes/documentos'
+import { Route as ContratosRouteImport } from './routes/contratos'
+import { Route as ContasAReceberRouteImport } from './routes/contas-a-receber'
+import { Route as ContasAPagarRouteImport } from './routes/contas-a-pagar'
+import { Route as ConfiguracoesRouteImport } from './routes/configuracoes'
+import { Route as ConciliacaoRouteImport } from './routes/conciliacao'
+import { Route as CobrancasRouteImport } from './routes/cobrancas'
+import { Route as ClientesRouteImport } from './routes/clientes'
+import { Route as CentroDeCustosRouteImport } from './routes/centro-de-custos'
+import { Route as CategoriasRouteImport } from './routes/categorias'
+import { Route as AssinaturasRouteImport } from './routes/assinaturas'
+import { Route as AgendaRouteImport } from './routes/agenda'
 import { Route as IndexRouteImport } from './routes/index'
 
+const UsuariosRoute = UsuariosRouteImport.update({
+  id: '/usuarios',
+  path: '/usuarios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RelatoriosRoute = RelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjetosRoute = ProjetosRouteImport.update({
+  id: '/projetos',
+  path: '/projetos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PermissoesRoute = PermissoesRouteImport.update({
+  id: '/permissoes',
+  path: '/permissoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LogsRoute = LogsRouteImport.update({
+  id: '/logs',
+  path: '/logs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntegracoesRoute = IntegracoesRouteImport.update({
+  id: '/integracoes',
+  path: '/integracoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndicadoresRoute = IndicadoresRouteImport.update({
+  id: '/indicadores',
+  path: '/indicadores',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IaFinanceiraRoute = IaFinanceiraRouteImport.update({
+  id: '/ia-financeira',
+  path: '/ia-financeira',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FornecedoresRoute = FornecedoresRouteImport.update({
+  id: '/fornecedores',
+  path: '/fornecedores',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FluxoDeCaixaRoute = FluxoDeCaixaRouteImport.update({
+  id: '/fluxo-de-caixa',
+  path: '/fluxo-de-caixa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DreRoute = DreRouteImport.update({
+  id: '/dre',
+  path: '/dre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentosRoute = DocumentosRouteImport.update({
+  id: '/documentos',
+  path: '/documentos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContratosRoute = ContratosRouteImport.update({
+  id: '/contratos',
+  path: '/contratos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContasAReceberRoute = ContasAReceberRouteImport.update({
+  id: '/contas-a-receber',
+  path: '/contas-a-receber',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContasAPagarRoute = ContasAPagarRouteImport.update({
+  id: '/contas-a-pagar',
+  path: '/contas-a-pagar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfiguracoesRoute = ConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConciliacaoRoute = ConciliacaoRouteImport.update({
+  id: '/conciliacao',
+  path: '/conciliacao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CobrancasRoute = CobrancasRouteImport.update({
+  id: '/cobrancas',
+  path: '/cobrancas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientesRoute = ClientesRouteImport.update({
+  id: '/clientes',
+  path: '/clientes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CentroDeCustosRoute = CentroDeCustosRouteImport.update({
+  id: '/centro-de-custos',
+  path: '/centro-de-custos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CategoriasRoute = CategoriasRouteImport.update({
+  id: '/categorias',
+  path: '/categorias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssinaturasRoute = AssinaturasRouteImport.update({
+  id: '/assinaturas',
+  path: '/assinaturas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgendaRoute = AgendaRouteImport.update({
+  id: '/agenda',
+  path: '/agenda',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +157,354 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agenda': typeof AgendaRoute
+  '/assinaturas': typeof AssinaturasRoute
+  '/categorias': typeof CategoriasRoute
+  '/centro-de-custos': typeof CentroDeCustosRoute
+  '/clientes': typeof ClientesRoute
+  '/cobrancas': typeof CobrancasRoute
+  '/conciliacao': typeof ConciliacaoRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/contas-a-pagar': typeof ContasAPagarRoute
+  '/contas-a-receber': typeof ContasAReceberRoute
+  '/contratos': typeof ContratosRoute
+  '/documentos': typeof DocumentosRoute
+  '/dre': typeof DreRoute
+  '/fluxo-de-caixa': typeof FluxoDeCaixaRoute
+  '/fornecedores': typeof FornecedoresRoute
+  '/ia-financeira': typeof IaFinanceiraRoute
+  '/indicadores': typeof IndicadoresRoute
+  '/integracoes': typeof IntegracoesRoute
+  '/logs': typeof LogsRoute
+  '/permissoes': typeof PermissoesRoute
+  '/projetos': typeof ProjetosRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/usuarios': typeof UsuariosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agenda': typeof AgendaRoute
+  '/assinaturas': typeof AssinaturasRoute
+  '/categorias': typeof CategoriasRoute
+  '/centro-de-custos': typeof CentroDeCustosRoute
+  '/clientes': typeof ClientesRoute
+  '/cobrancas': typeof CobrancasRoute
+  '/conciliacao': typeof ConciliacaoRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/contas-a-pagar': typeof ContasAPagarRoute
+  '/contas-a-receber': typeof ContasAReceberRoute
+  '/contratos': typeof ContratosRoute
+  '/documentos': typeof DocumentosRoute
+  '/dre': typeof DreRoute
+  '/fluxo-de-caixa': typeof FluxoDeCaixaRoute
+  '/fornecedores': typeof FornecedoresRoute
+  '/ia-financeira': typeof IaFinanceiraRoute
+  '/indicadores': typeof IndicadoresRoute
+  '/integracoes': typeof IntegracoesRoute
+  '/logs': typeof LogsRoute
+  '/permissoes': typeof PermissoesRoute
+  '/projetos': typeof ProjetosRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/usuarios': typeof UsuariosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agenda': typeof AgendaRoute
+  '/assinaturas': typeof AssinaturasRoute
+  '/categorias': typeof CategoriasRoute
+  '/centro-de-custos': typeof CentroDeCustosRoute
+  '/clientes': typeof ClientesRoute
+  '/cobrancas': typeof CobrancasRoute
+  '/conciliacao': typeof ConciliacaoRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/contas-a-pagar': typeof ContasAPagarRoute
+  '/contas-a-receber': typeof ContasAReceberRoute
+  '/contratos': typeof ContratosRoute
+  '/documentos': typeof DocumentosRoute
+  '/dre': typeof DreRoute
+  '/fluxo-de-caixa': typeof FluxoDeCaixaRoute
+  '/fornecedores': typeof FornecedoresRoute
+  '/ia-financeira': typeof IaFinanceiraRoute
+  '/indicadores': typeof IndicadoresRoute
+  '/integracoes': typeof IntegracoesRoute
+  '/logs': typeof LogsRoute
+  '/permissoes': typeof PermissoesRoute
+  '/projetos': typeof ProjetosRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/usuarios': typeof UsuariosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/agenda'
+    | '/assinaturas'
+    | '/categorias'
+    | '/centro-de-custos'
+    | '/clientes'
+    | '/cobrancas'
+    | '/conciliacao'
+    | '/configuracoes'
+    | '/contas-a-pagar'
+    | '/contas-a-receber'
+    | '/contratos'
+    | '/documentos'
+    | '/dre'
+    | '/fluxo-de-caixa'
+    | '/fornecedores'
+    | '/ia-financeira'
+    | '/indicadores'
+    | '/integracoes'
+    | '/logs'
+    | '/permissoes'
+    | '/projetos'
+    | '/relatorios'
+    | '/usuarios'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/agenda'
+    | '/assinaturas'
+    | '/categorias'
+    | '/centro-de-custos'
+    | '/clientes'
+    | '/cobrancas'
+    | '/conciliacao'
+    | '/configuracoes'
+    | '/contas-a-pagar'
+    | '/contas-a-receber'
+    | '/contratos'
+    | '/documentos'
+    | '/dre'
+    | '/fluxo-de-caixa'
+    | '/fornecedores'
+    | '/ia-financeira'
+    | '/indicadores'
+    | '/integracoes'
+    | '/logs'
+    | '/permissoes'
+    | '/projetos'
+    | '/relatorios'
+    | '/usuarios'
+  id:
+    | '__root__'
+    | '/'
+    | '/agenda'
+    | '/assinaturas'
+    | '/categorias'
+    | '/centro-de-custos'
+    | '/clientes'
+    | '/cobrancas'
+    | '/conciliacao'
+    | '/configuracoes'
+    | '/contas-a-pagar'
+    | '/contas-a-receber'
+    | '/contratos'
+    | '/documentos'
+    | '/dre'
+    | '/fluxo-de-caixa'
+    | '/fornecedores'
+    | '/ia-financeira'
+    | '/indicadores'
+    | '/integracoes'
+    | '/logs'
+    | '/permissoes'
+    | '/projetos'
+    | '/relatorios'
+    | '/usuarios'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgendaRoute: typeof AgendaRoute
+  AssinaturasRoute: typeof AssinaturasRoute
+  CategoriasRoute: typeof CategoriasRoute
+  CentroDeCustosRoute: typeof CentroDeCustosRoute
+  ClientesRoute: typeof ClientesRoute
+  CobrancasRoute: typeof CobrancasRoute
+  ConciliacaoRoute: typeof ConciliacaoRoute
+  ConfiguracoesRoute: typeof ConfiguracoesRoute
+  ContasAPagarRoute: typeof ContasAPagarRoute
+  ContasAReceberRoute: typeof ContasAReceberRoute
+  ContratosRoute: typeof ContratosRoute
+  DocumentosRoute: typeof DocumentosRoute
+  DreRoute: typeof DreRoute
+  FluxoDeCaixaRoute: typeof FluxoDeCaixaRoute
+  FornecedoresRoute: typeof FornecedoresRoute
+  IaFinanceiraRoute: typeof IaFinanceiraRoute
+  IndicadoresRoute: typeof IndicadoresRoute
+  IntegracoesRoute: typeof IntegracoesRoute
+  LogsRoute: typeof LogsRoute
+  PermissoesRoute: typeof PermissoesRoute
+  ProjetosRoute: typeof ProjetosRoute
+  RelatoriosRoute: typeof RelatoriosRoute
+  UsuariosRoute: typeof UsuariosRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/usuarios': {
+      id: '/usuarios'
+      path: '/usuarios'
+      fullPath: '/usuarios'
+      preLoaderRoute: typeof UsuariosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relatorios': {
+      id: '/relatorios'
+      path: '/relatorios'
+      fullPath: '/relatorios'
+      preLoaderRoute: typeof RelatoriosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projetos': {
+      id: '/projetos'
+      path: '/projetos'
+      fullPath: '/projetos'
+      preLoaderRoute: typeof ProjetosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/permissoes': {
+      id: '/permissoes'
+      path: '/permissoes'
+      fullPath: '/permissoes'
+      preLoaderRoute: typeof PermissoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/logs': {
+      id: '/logs'
+      path: '/logs'
+      fullPath: '/logs'
+      preLoaderRoute: typeof LogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/integracoes': {
+      id: '/integracoes'
+      path: '/integracoes'
+      fullPath: '/integracoes'
+      preLoaderRoute: typeof IntegracoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/indicadores': {
+      id: '/indicadores'
+      path: '/indicadores'
+      fullPath: '/indicadores'
+      preLoaderRoute: typeof IndicadoresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ia-financeira': {
+      id: '/ia-financeira'
+      path: '/ia-financeira'
+      fullPath: '/ia-financeira'
+      preLoaderRoute: typeof IaFinanceiraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fornecedores': {
+      id: '/fornecedores'
+      path: '/fornecedores'
+      fullPath: '/fornecedores'
+      preLoaderRoute: typeof FornecedoresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fluxo-de-caixa': {
+      id: '/fluxo-de-caixa'
+      path: '/fluxo-de-caixa'
+      fullPath: '/fluxo-de-caixa'
+      preLoaderRoute: typeof FluxoDeCaixaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dre': {
+      id: '/dre'
+      path: '/dre'
+      fullPath: '/dre'
+      preLoaderRoute: typeof DreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documentos': {
+      id: '/documentos'
+      path: '/documentos'
+      fullPath: '/documentos'
+      preLoaderRoute: typeof DocumentosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contratos': {
+      id: '/contratos'
+      path: '/contratos'
+      fullPath: '/contratos'
+      preLoaderRoute: typeof ContratosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contas-a-receber': {
+      id: '/contas-a-receber'
+      path: '/contas-a-receber'
+      fullPath: '/contas-a-receber'
+      preLoaderRoute: typeof ContasAReceberRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contas-a-pagar': {
+      id: '/contas-a-pagar'
+      path: '/contas-a-pagar'
+      fullPath: '/contas-a-pagar'
+      preLoaderRoute: typeof ContasAPagarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/configuracoes': {
+      id: '/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof ConfiguracoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conciliacao': {
+      id: '/conciliacao'
+      path: '/conciliacao'
+      fullPath: '/conciliacao'
+      preLoaderRoute: typeof ConciliacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cobrancas': {
+      id: '/cobrancas'
+      path: '/cobrancas'
+      fullPath: '/cobrancas'
+      preLoaderRoute: typeof CobrancasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clientes': {
+      id: '/clientes'
+      path: '/clientes'
+      fullPath: '/clientes'
+      preLoaderRoute: typeof ClientesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/centro-de-custos': {
+      id: '/centro-de-custos'
+      path: '/centro-de-custos'
+      fullPath: '/centro-de-custos'
+      preLoaderRoute: typeof CentroDeCustosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/categorias': {
+      id: '/categorias'
+      path: '/categorias'
+      fullPath: '/categorias'
+      preLoaderRoute: typeof CategoriasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assinaturas': {
+      id: '/assinaturas'
+      path: '/assinaturas'
+      fullPath: '/assinaturas'
+      preLoaderRoute: typeof AssinaturasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agenda': {
+      id: '/agenda'
+      path: '/agenda'
+      fullPath: '/agenda'
+      preLoaderRoute: typeof AgendaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +517,30 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgendaRoute: AgendaRoute,
+  AssinaturasRoute: AssinaturasRoute,
+  CategoriasRoute: CategoriasRoute,
+  CentroDeCustosRoute: CentroDeCustosRoute,
+  ClientesRoute: ClientesRoute,
+  CobrancasRoute: CobrancasRoute,
+  ConciliacaoRoute: ConciliacaoRoute,
+  ConfiguracoesRoute: ConfiguracoesRoute,
+  ContasAPagarRoute: ContasAPagarRoute,
+  ContasAReceberRoute: ContasAReceberRoute,
+  ContratosRoute: ContratosRoute,
+  DocumentosRoute: DocumentosRoute,
+  DreRoute: DreRoute,
+  FluxoDeCaixaRoute: FluxoDeCaixaRoute,
+  FornecedoresRoute: FornecedoresRoute,
+  IaFinanceiraRoute: IaFinanceiraRoute,
+  IndicadoresRoute: IndicadoresRoute,
+  IntegracoesRoute: IntegracoesRoute,
+  LogsRoute: LogsRoute,
+  PermissoesRoute: PermissoesRoute,
+  ProjetosRoute: ProjetosRoute,
+  RelatoriosRoute: RelatoriosRoute,
+  UsuariosRoute: UsuariosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
