@@ -101,14 +101,12 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="border-b border-sidebar-border">
-        <Link to="/" className="flex items-center gap-2.5 px-2 py-2.5">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm">
-            <span className="text-sm font-bold">F</span>
-          </div>
-          <div className="flex flex-col leading-tight group-data-[collapsible=icon]:hidden">
-            <span className="text-sm font-semibold tracking-tight">Focus Finance</span>
-            <span className="text-[11px] text-muted-foreground">Focus Tecnologia</span>
-          </div>
+        <Link to="/" className="flex items-center gap-2 px-2 py-2.5">
+          <img
+            src={focusLogo}
+            alt="Focus ERP — powered by focus tech"
+            className="h-9 w-auto object-contain group-data-[collapsible=icon]:h-8"
+          />
         </Link>
       </SidebarHeader>
       <SidebarContent>
