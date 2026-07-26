@@ -30,6 +30,7 @@ import { Route as IndicadoresRouteImport } from './routes/indicadores'
 import { Route as IntegracoesRouteImport } from './routes/integracoes'
 import { Route as LogsRouteImport } from './routes/logs'
 import { Route as PermissoesRouteImport } from './routes/permissoes'
+import { Route as ProdutosRouteImport } from './routes/produtos'
 import { Route as ProjetosRouteImport } from './routes/projetos'
 import { Route as RelatoriosRouteImport } from './routes/relatorios'
 import { Route as UsuariosRouteImport } from './routes/usuarios'
@@ -139,6 +140,11 @@ const PermissoesRoute = PermissoesRouteImport.update({
   path: '/permissoes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProdutosRoute = ProdutosRouteImport.update({
+  id: '/produtos',
+  path: '/produtos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjetosRoute = ProjetosRouteImport.update({
   id: '/projetos',
   path: '/projetos',
@@ -177,6 +183,7 @@ export interface FileRoutesByFullPath {
   '/integracoes': typeof IntegracoesRoute
   '/logs': typeof LogsRoute
   '/permissoes': typeof PermissoesRoute
+  '/produtos': typeof ProdutosRoute
   '/projetos': typeof ProjetosRoute
   '/relatorios': typeof RelatoriosRoute
   '/usuarios': typeof UsuariosRoute
@@ -203,6 +210,7 @@ export interface FileRoutesByTo {
   '/integracoes': typeof IntegracoesRoute
   '/logs': typeof LogsRoute
   '/permissoes': typeof PermissoesRoute
+  '/produtos': typeof ProdutosRoute
   '/projetos': typeof ProjetosRoute
   '/relatorios': typeof RelatoriosRoute
   '/usuarios': typeof UsuariosRoute
@@ -230,6 +238,7 @@ export interface FileRoutesById {
   '/integracoes': typeof IntegracoesRoute
   '/logs': typeof LogsRoute
   '/permissoes': typeof PermissoesRoute
+  '/produtos': typeof ProdutosRoute
   '/projetos': typeof ProjetosRoute
   '/relatorios': typeof RelatoriosRoute
   '/usuarios': typeof UsuariosRoute
@@ -258,6 +267,7 @@ export interface FileRouteTypes {
     | '/integracoes'
     | '/logs'
     | '/permissoes'
+    | '/produtos'
     | '/projetos'
     | '/relatorios'
     | '/usuarios'
@@ -284,6 +294,7 @@ export interface FileRouteTypes {
     | '/integracoes'
     | '/logs'
     | '/permissoes'
+    | '/produtos'
     | '/projetos'
     | '/relatorios'
     | '/usuarios'
@@ -310,6 +321,7 @@ export interface FileRouteTypes {
     | '/integracoes'
     | '/logs'
     | '/permissoes'
+    | '/produtos'
     | '/projetos'
     | '/relatorios'
     | '/usuarios'
@@ -337,6 +349,7 @@ export interface RootRouteChildren {
   IntegracoesRoute: typeof IntegracoesRoute
   LogsRoute: typeof LogsRoute
   PermissoesRoute: typeof PermissoesRoute
+  ProdutosRoute: typeof ProdutosRoute
   ProjetosRoute: typeof ProjetosRoute
   RelatoriosRoute: typeof RelatoriosRoute
   UsuariosRoute: typeof UsuariosRoute
@@ -491,6 +504,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PermissoesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/produtos': {
+      id: '/produtos'
+      path: '/produtos'
+      fullPath: '/produtos'
+      preLoaderRoute: typeof ProdutosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projetos': {
       id: '/projetos'
       path: '/projetos'
@@ -537,6 +557,7 @@ const rootRouteChildren: RootRouteChildren = {
   IntegracoesRoute: IntegracoesRoute,
   LogsRoute: LogsRoute,
   PermissoesRoute: PermissoesRoute,
+  ProdutosRoute: ProdutosRoute,
   ProjetosRoute: ProjetosRoute,
   RelatoriosRoute: RelatoriosRoute,
   UsuariosRoute: UsuariosRoute,
