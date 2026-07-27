@@ -1,17 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-<<<<<<< HEAD
-import { PlaceholderPage } from "@/components/placeholder-page";
-
-export const Route = createFileRoute("/clientes")({
-  component: () => (
-    <PlaceholderPage
-      title="Clientes"
-      description="Cadastro completo com abas Financeira, Documentos e Timeline por cliente."
-      features={["Dados cadastrais e contatos", "Mensalidade, implantação e contratos", "Boletos, PIX, faturas e inadimplência", "Documentos e histórico consolidado"]}
-    />
-  ),
-});
-=======
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dashboard } from "@/features/clientes/components/Dashboard";
 import { ClientesList } from "@/features/clientes/components/ClientesList";
@@ -47,4 +34,3 @@ function ClientesPage() {
     </div>
   );
 }
->>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)

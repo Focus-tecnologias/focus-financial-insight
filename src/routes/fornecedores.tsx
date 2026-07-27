@@ -1,16 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-<<<<<<< HEAD
-import { PlaceholderPage } from "@/components/placeholder-page";
-
-export const Route = createFileRoute("/fornecedores")({
-  component: () => (
-    <PlaceholderPage
-      title="Fornecedores"
-      description="Cadastro, financeiro, contratos, anexos e histórico de pagamentos por fornecedor."
-    />
-  ),
-});
-=======
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dashboard } from "@/features/fornecedores/components/Dashboard";
 import { FornecedoresList } from "@/features/fornecedores/components/FornecedoresList";
@@ -25,7 +13,7 @@ function FornecedoresPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Fornecedores</h1>
         <p className="text-muted-foreground mt-2">
-          Cadastro central de parceiros e fornecedores de serviços da sua operação.
+          Cadastro central de parceiros e fornecedores de serviÃ§os da sua operaÃ§Ã£o.
         </p>
       </div>
 
@@ -33,7 +21,7 @@ function FornecedoresPage() {
         <TabsList className="grid w-full grid-cols-2 lg:w-[400px]">
           
           <TabsTrigger value="lista">Todos os Fornecedores</TabsTrigger>
-          <TabsTrigger value="dashboard">Visão Geral</TabsTrigger>
+          <TabsTrigger value="dashboard">VisÃ£o Geral</TabsTrigger>
         </TabsList>
         
         <TabsContent value="lista" className="space-y-4 outline-none">
@@ -46,4 +34,3 @@ function FornecedoresPage() {
     </div>
   );
 }
->>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)

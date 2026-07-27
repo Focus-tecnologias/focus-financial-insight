@@ -1,16 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-<<<<<<< HEAD
-import { PlaceholderPage } from "@/components/placeholder-page";
-
-export const Route = createFileRoute("/centro-de-custos")({
-  component: () => (
-    <PlaceholderPage
-      title="Centro de Custos"
-      description="Administrativo, Marketing, Comercial, Tecnologia, Financeiro, RH, Operacional, Cloud e mais."
-    />
-  ),
-});
-=======
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dashboard } from "@/features/centro-de-custos/components/Dashboard";
 import { CentroCustosList } from "@/features/centro-de-custos/components/CentroCustosList";
@@ -25,7 +13,7 @@ function CentroCustosPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Centro de Custos</h1>
         <p className="text-muted-foreground mt-2">
-          Estrutura organizacional de classificação financeira para receitas, despesas, departamentos e projetos.
+          Estrutura organizacional de classificaÃ§Ã£o financeira para receitas, despesas, departamentos e projetos.
         </p>
       </div>
 
@@ -33,7 +21,7 @@ function CentroCustosPage() {
         <TabsList className="grid w-full grid-cols-2 lg:w-[400px]">
           
           <TabsTrigger value="lista">Explorar Estrutura</TabsTrigger>
-          <TabsTrigger value="dashboard">Visão Geral</TabsTrigger>
+          <TabsTrigger value="dashboard">VisÃ£o Geral</TabsTrigger>
         </TabsList>
         
         <TabsContent value="lista" className="space-y-4 outline-none">
@@ -46,4 +34,3 @@ function CentroCustosPage() {
     </div>
   );
 }
->>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)

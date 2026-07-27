@@ -1,16 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-<<<<<<< HEAD
-import { PlaceholderPage } from "@/components/placeholder-page";
-
-export const Route = createFileRoute("/usuarios")({
-  component: () => (
-    <PlaceholderPage
-      title="Usuários"
-      description="Gestão da equipe com perfis, sessões e status."
-    />
-  ),
-});
-=======
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { UsuariosDashboard } from "@/features/usuarios/components/UsuariosDashboard";
 import { UsuariosTable } from "@/features/usuarios/components/UsuariosTable";
@@ -28,9 +16,9 @@ function UsuariosPage() {
           <Shield className="w-6 h-6 text-primary" />
         </div>
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Governança e Acessos (IAM)</h1>
+          <h1 className="text-3xl font-bold tracking-tight">GovernanÃ§a e Acessos (IAM)</h1>
           <p className="text-muted-foreground mt-1">
-            Gestão centralizada de identidade, permissões e segurança corporativa.
+            GestÃ£o centralizada de identidade, permissÃµes e seguranÃ§a corporativa.
           </p>
         </div>
       </div>
@@ -39,10 +27,10 @@ function UsuariosPage() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <TabsList className="grid w-full grid-cols-2 lg:w-[450px] bg-muted/50 p-1">
             <TabsTrigger value="tabela" className="gap-2">
-              <Users className="w-4 h-4" /> Diretório de Usuários
+              <Users className="w-4 h-4" /> DiretÃ³rio de UsuÃ¡rios
             </TabsTrigger>
             <TabsTrigger value="dashboard" className="gap-2">
-              <Activity className="w-4 h-4" /> Monitor de Governança
+              <Activity className="w-4 h-4" /> Monitor de GovernanÃ§a
             </TabsTrigger>
           </TabsList>
         </div>
@@ -58,4 +46,3 @@ function UsuariosPage() {
     </div>
   );
 }
->>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)

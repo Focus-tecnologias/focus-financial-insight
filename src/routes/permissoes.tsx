@@ -1,18 +1,4 @@
-<<<<<<< HEAD
-import { createFileRoute } from "@tanstack/react-router";
-import { PlaceholderPage } from "@/components/placeholder-page";
-
-export const Route = createFileRoute("/permissoes")({
-  component: () => (
-    <PlaceholderPage
-      title="Permissões"
-      description="RBAC granular por módulo, ação e registro."
-      features={["Administrador, Financeiro, Diretor", "Comercial, Tecnologia, RH, Consultor", "Visualizador", "Trilhas de auditoria"]}
-    />
-  ),
-});
-=======
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PermissoesDashboard } from "@/features/permissoes/components/PermissoesDashboard";
@@ -30,7 +16,7 @@ function PermissoesPage() {
 
   return (
     <div className="flex flex-col gap-6 p-6 max-w-[1400px] mx-auto w-full animate-fade-in">
-      {/* Cabeçalho do Módulo de Permissões */}
+      {/* CabeÃ§alho do MÃ³dulo de PermissÃµes */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 flex items-center justify-center shadow-sm">
@@ -38,27 +24,27 @@ function PermissoesPage() {
           </div>
           <div>
             <div>
-              <h1 className="text-3xl font-bold tracking-tight">Permissões & Governança (RBAC)</h1>
+              <h1 className="text-3xl font-bold tracking-tight">PermissÃµes & GovernanÃ§a (RBAC)</h1>
             </div>
             <p className="text-muted-foreground mt-1 text-sm">
-              Gestão de perfis de acesso, matriz de permissões por módulo e alteração de setores com sincronização automática com os módulos RH e Usuários.
+              GestÃ£o de perfis de acesso, matriz de permissÃµes por mÃ³dulo e alteraÃ§Ã£o de setores com sincronizaÃ§Ã£o automÃ¡tica com os mÃ³dulos RH e UsuÃ¡rios.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Navegação por Abas */}
+      {/* NavegaÃ§Ã£o por Abas */}
       <Tabs defaultValue="colaboradores" className="space-y-6 mt-2" onValueChange={setActiveTab}>
         <div className="border-b pb-2">
           <TabsList className="bg-muted/50 p-1">
             <TabsTrigger value="colaboradores" className="gap-2 text-orange-600 font-semibold">
-              <Users className="w-4 h-4" /> Colaboradores & Sincronização de Setor
+              <Users className="w-4 h-4" /> Colaboradores & SincronizaÃ§Ã£o de Setor
             </TabsTrigger>
             <TabsTrigger value="matriz" className="gap-2">
-              <Lock className="w-4 h-4" /> Matriz de Permissões (RBAC)
+              <Lock className="w-4 h-4" /> Matriz de PermissÃµes (RBAC)
             </TabsTrigger>
             <TabsTrigger value="dashboard" className="gap-2">
-              <LayoutGrid className="w-4 h-4" /> Dashboard de Governança
+              <LayoutGrid className="w-4 h-4" /> Dashboard de GovernanÃ§a
             </TabsTrigger>
           </TabsList>
         </div>
@@ -78,4 +64,3 @@ function PermissoesPage() {
     </div>
   );
 }
->>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)

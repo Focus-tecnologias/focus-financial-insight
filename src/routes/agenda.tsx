@@ -1,17 +1,4 @@
-<<<<<<< HEAD
-import { createFileRoute } from "@tanstack/react-router";
-import { PlaceholderPage } from "@/components/placeholder-page";
-
-export const Route = createFileRoute("/agenda")({
-  component: () => (
-    <PlaceholderPage
-      title="Agenda Financeira"
-      description="Calendário mensal com vencimentos, recebimentos, impostos e contratos."
-    />
-  ),
-});
-=======
-import { useState } from "react";
+﻿import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dashboard } from "@/features/agenda/components/Dashboard";
@@ -40,7 +27,7 @@ function AgendaPage() {
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Agenda Financeira</h1>
             <p className="text-muted-foreground mt-1">
-              Calendário inteligente agregando Títulos, Projetos, Contratos e Impostos automaticamente.
+              CalendÃ¡rio inteligente agregando TÃ­tulos, Projetos, Contratos e Impostos automaticamente.
             </p>
           </div>
         </div>
@@ -59,7 +46,7 @@ function AgendaPage() {
               <LayoutList className="w-4 h-4" /> Lista / Timeline
             </TabsTrigger>
             <TabsTrigger value="mensal" className="gap-2 text-primary font-medium">
-              <Calendar className="w-4 h-4" /> Calendário Mensal
+              <Calendar className="w-4 h-4" /> CalendÃ¡rio Mensal
             </TabsTrigger>
             <TabsTrigger value="dashboard" className="gap-2">
               <MapPin className="w-4 h-4" /> Dashboard
@@ -89,4 +76,3 @@ function AgendaPage() {
     </div>
   );
 }
->>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)

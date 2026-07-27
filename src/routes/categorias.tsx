@@ -1,16 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-<<<<<<< HEAD
-import { PlaceholderPage } from "@/components/placeholder-page";
-
-export const Route = createFileRoute("/categorias")({
-  component: () => (
-    <PlaceholderPage
-      title="Categorias Financeiras"
-      description="Estrutura de receitas e despesas por categoria, com hierarquia e classificações contábeis."
-    />
-  ),
-});
-=======
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dashboard } from "@/features/plano-contas/components/Dashboard";
 import { PlanoContasList } from "@/features/plano-contas/components/PlanoContasList";
@@ -30,7 +18,7 @@ function PlanoContasPage() {
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Plano de Contas</h1>
           <p className="text-muted-foreground mt-1">
-            Categorização hierárquica e contábil de receitas e despesas gerenciais.
+            CategorizaÃ§Ã£o hierÃ¡rquica e contÃ¡bil de receitas e despesas gerenciais.
           </p>
         </div>
       </div>
@@ -40,7 +28,7 @@ function PlanoContasPage() {
           <TabsList className="grid w-full grid-cols-3 lg:w-[600px] bg-muted/50 p-1">
             
             <TabsTrigger value="arvore" className="gap-2 text-primary font-medium">
-              <ListTree className="w-4 h-4" /> Estrutura em Árvore
+              <ListTree className="w-4 h-4" /> Estrutura em Ãrvore
             </TabsTrigger>
             <TabsTrigger value="organograma" className="gap-2">
               <Network className="w-4 h-4" /> Organograma
@@ -59,7 +47,7 @@ function PlanoContasPage() {
           <div className="flex flex-col items-center justify-center py-32 text-center border rounded-lg border-dashed bg-muted/10">
             <Network className="w-12 h-12 text-muted-foreground/50 mb-4" />
             <h3 className="text-lg font-medium">Organograma Visual</h3>
-            <p className="text-sm text-muted-foreground mt-1">Visão em nós renderizados graficamente sendo projetada para a Fase 2.</p>
+            <p className="text-sm text-muted-foreground mt-1">VisÃ£o em nÃ³s renderizados graficamente sendo projetada para a Fase 2.</p>
           </div>
         </TabsContent>
       <TabsContent value="dashboard" className="space-y-4 outline-none">
@@ -69,4 +57,3 @@ function PlanoContasPage() {
     </div>
   );
 }
->>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)

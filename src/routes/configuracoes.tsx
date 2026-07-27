@@ -1,17 +1,4 @@
-<<<<<<< HEAD
-import { createFileRoute } from "@tanstack/react-router";
-import { PlaceholderPage } from "@/components/placeholder-page";
-
-export const Route = createFileRoute("/configuracoes")({
-  component: () => (
-    <PlaceholderPage
-      title="Configurações"
-      description="Preferências da empresa, plano de contas, aparência e políticas do sistema."
-    />
-  ),
-});
-=======
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { createFileRoute } from "@tanstack/react-router";
 import { ConfiguracoesLayout } from "@/features/configuracoes/components/ConfiguracoesLayout";
 import { ConfigDashboard } from "@/features/configuracoes/components/ConfigDashboard";
@@ -42,9 +29,9 @@ function ConfiguracoesPage() {
           <Settings className="w-6 h-6 text-primary" />
         </div>
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Configurações da Plataforma</h1>
+          <h1 className="text-3xl font-bold tracking-tight">ConfiguraÃ§Ãµes da Plataforma</h1>
           <p className="text-muted-foreground mt-1">
-            Parametrização global, segurança, central de comunicação e integrações.
+            ParametrizaÃ§Ã£o global, seguranÃ§a, central de comunicaÃ§Ã£o e integraÃ§Ãµes.
           </p>
         </div>
       </div>
@@ -72,4 +59,3 @@ function ConfiguracoesPage() {
     </div>
   );
 }
->>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)

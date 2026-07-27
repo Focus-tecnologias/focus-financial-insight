@@ -1,17 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-<<<<<<< HEAD
-import { PlaceholderPage } from "@/components/placeholder-page";
-
-export const Route = createFileRoute("/dre")({
-  component: () => (
-    <PlaceholderPage
-      title="DRE"
-      description="Demonstração do Resultado do Exercício com EBITDA, margem e comparativos."
-      features={["Receita bruta e líquida", "Custos, despesas e impostos", "EBITDA e Lucro Líquido", "Comparativos período a período"]}
-    />
-  ),
-});
-=======
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dashboard } from "@/features/dre/components/Dashboard";
 import { DreTable } from "@/features/dre/components/DreTable";
@@ -31,7 +18,7 @@ function DrePage() {
         <div>
           <h1 className="text-3xl font-bold tracking-tight">DRE Gerencial</h1>
           <p className="text-muted-foreground mt-1">
-            Demonstração do Resultado do Exercício consolidada em tempo real.
+            DemonstraÃ§Ã£o do Resultado do ExercÃ­cio consolidada em tempo real.
           </p>
         </div>
       </div>
@@ -55,4 +42,3 @@ function DrePage() {
     </div>
   );
 }
->>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)

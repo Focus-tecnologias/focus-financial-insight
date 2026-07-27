@@ -1,16 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-<<<<<<< HEAD
-import { PlaceholderPage } from "@/components/placeholder-page";
-
-export const Route = createFileRoute("/conciliacao")({
-  component: () => (
-    <PlaceholderPage
-      title="Conciliação Bancária"
-      description="Importação OFX/CSV com conciliação automática e manual."
-    />
-  ),
-});
-=======
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dashboard } from "@/features/conciliacao/components/Dashboard";
 import { ConciliacaoList } from "@/features/conciliacao/components/ConciliacaoList";
@@ -31,9 +19,9 @@ function ConciliacaoPage() {
           <Scale className="w-6 h-6 text-primary" />
         </div>
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Conciliação Bancária</h1>
+          <h1 className="text-3xl font-bold tracking-tight">ConciliaÃ§Ã£o BancÃ¡ria</h1>
           <p className="text-muted-foreground mt-1">
-            Validação oficial entre os extratos bancários e os lançamentos financeiros do sistema.
+            ValidaÃ§Ã£o oficial entre os extratos bancÃ¡rios e os lanÃ§amentos financeiros do sistema.
           </p>
         </div>
       </div>
@@ -42,9 +30,9 @@ function ConciliacaoPage() {
         <TabsList className="grid w-full grid-cols-5 lg:w-[800px] bg-muted/50 p-1">
           
           <TabsTrigger value="conciliacao" className="text-primary font-medium">Conciliar (Lado a Lado)</TabsTrigger>
-          <TabsTrigger value="divergencias">Divergências</TabsTrigger>
+          <TabsTrigger value="divergencias">DivergÃªncias</TabsTrigger>
           <TabsTrigger value="importar">Importar Extrato</TabsTrigger>
-          <TabsTrigger value="contas">Contas Bancárias</TabsTrigger>
+          <TabsTrigger value="contas">Contas BancÃ¡rias</TabsTrigger>
           <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
         </TabsList>
 
@@ -70,4 +58,3 @@ function ConciliacaoPage() {
     </div>
   );
 }
->>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)

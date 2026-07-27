@@ -1,18 +1,4 @@
-<<<<<<< HEAD
-import { createFileRoute } from "@tanstack/react-router";
-import { PlaceholderPage } from "@/components/placeholder-page";
-
-export const Route = createFileRoute("/documentos")({
-  component: () => (
-    <PlaceholderPage
-      title="Documentos"
-      description="Armazenamento interno com versionamento e busca."
-      features={["Contratos, NF, boletos, comprovantes", "Escopos e propostas", "Versionamento", "Pesquisa full-text"]}
-    />
-  ),
-});
-=======
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DmsDashboard } from "@/features/documentos/components/DmsDashboard";
@@ -33,7 +19,7 @@ function CentralDocumentacaoPage() {
 
   return (
     <div className="flex flex-col gap-6 p-6 max-w-[1400px] mx-auto w-full animate-fade-in">
-      {/* Cabeçalho da Central de Documentação */}
+      {/* CabeÃ§alho da Central de DocumentaÃ§Ã£o */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 flex items-center justify-center shadow-sm">
@@ -41,19 +27,19 @@ function CentralDocumentacaoPage() {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-3xl font-bold tracking-tight">Central de Documentação</h1>
+              <h1 className="text-3xl font-bold tracking-tight">Central de DocumentaÃ§Ã£o</h1>
               <Badge variant="outline" className="border-orange-500/40 text-orange-600 font-semibold gap-1 bg-orange-50 dark:bg-orange-950/40">
                 <ShieldCheck className="w-3.5 h-3.5" /> DMS / ECM Enterprise
               </Badge>
             </div>
             <p className="text-muted-foreground mt-1 text-sm">
-              Único repositório corporativo de armazenamento, versionamento, permissões e auditoria do Focus Finance.
+              Ãšnico repositÃ³rio corporativo de armazenamento, versionamento, permissÃµes e auditoria do Focus Finance.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Navegação por Abas */}
+      {/* NavegaÃ§Ã£o por Abas */}
       <Tabs defaultValue="explorador" className="space-y-6 mt-2" onValueChange={setActiveTab}>
         <div className="border-b pb-2">
           <TabsList className="bg-muted/50 p-1">
@@ -91,4 +77,3 @@ function CentralDocumentacaoPage() {
     </div>
   );
 }
->>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)

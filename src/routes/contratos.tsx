@@ -1,17 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-<<<<<<< HEAD
-import { PlaceholderPage } from "@/components/placeholder-page";
-
-export const Route = createFileRoute("/contratos")({
-  component: () => (
-    <PlaceholderPage
-      title="Contratos"
-      description="Gestão de contratos com valor, mensalidade, prazo, renovação e reajuste."
-      features={["Prazos de 12/24/36 meses", "Renovação automática", "Reajuste anual", "Histórico e assinaturas"]}
-    />
-  ),
-});
-=======
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dashboard } from "@/features/contratos/components/Dashboard";
 import { ContratosList } from "@/features/contratos/components/ContratosList";
@@ -26,7 +13,7 @@ function ContratosPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Contratos (CLM)</h1>
         <p className="text-muted-foreground mt-2">
-          Gestão centralizada do ciclo de vida de contratos com clientes, fornecedores e parceiros.
+          GestÃ£o centralizada do ciclo de vida de contratos com clientes, fornecedores e parceiros.
         </p>
       </div>
 
@@ -57,4 +44,3 @@ function ContratosPage() {
     </div>
   );
 }
->>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)

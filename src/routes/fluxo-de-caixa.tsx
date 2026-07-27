@@ -1,17 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
-<<<<<<< HEAD
-import { PlaceholderPage } from "@/components/placeholder-page";
-
-export const Route = createFileRoute("/fluxo-de-caixa")({
-  component: () => (
-    <PlaceholderPage
-      title="Fluxo de Caixa"
-      description="Entradas, saídas e projeções diárias, semanais, mensais e anuais com comparativo previsto x realizado."
-      features={["Saldo diário e projetado", "Fluxo previsto x realizado", "Linha do tempo financeira", "Filtros avançados por conta e categoria"]}
-    />
-  ),
-});
-=======
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dashboard } from "@/features/fluxo-caixa/components/Dashboard";
 import { FluxoTimeline } from "@/features/fluxo-caixa/components/FluxoTimeline";
@@ -30,22 +17,22 @@ function FluxoCaixaPage() {
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Fluxo de Caixa</h1>
         <p className="text-muted-foreground mt-2">
-          Visão consolidada do saldo, projeções preditivas, comparativo previsto vs. realizado e histórico financeiro.
+          VisÃ£o consolidada do saldo, projeÃ§Ãµes preditivas, comparativo previsto vs. realizado e histÃ³rico financeiro.
         </p>
       </div>
 
       <Alert>
         <AlertCircle className="h-4 w-4" />
-        <AlertTitle>Visualização Consolidada Automática</AlertTitle>
+        <AlertTitle>VisualizaÃ§Ã£o Consolidada AutomÃ¡tica</AlertTitle>
         <AlertDescription>
-          O fluxo de caixa é alimentado e atualizado automaticamente em tempo real pelos módulos de Contas a Receber e Contas a Pagar.
+          O fluxo de caixa Ã© alimentado e atualizado automaticamente em tempo real pelos mÃ³dulos de Contas a Receber e Contas a Pagar.
         </AlertDescription>
       </Alert>
 
       <Tabs defaultValue="extrato" className="space-y-6">
         <TabsList className="grid w-full grid-cols-4 lg:w-[550px]">
           <TabsTrigger value="extrato">Extrato / Timeline</TabsTrigger>
-          <TabsTrigger value="projecoes">Projeções</TabsTrigger>
+          <TabsTrigger value="projecoes">ProjeÃ§Ãµes</TabsTrigger>
           <TabsTrigger value="comparativo">Comparativo</TabsTrigger>
           <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
         </TabsList>
@@ -66,4 +53,3 @@ function FluxoCaixaPage() {
     </div>
   );
 }
->>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)

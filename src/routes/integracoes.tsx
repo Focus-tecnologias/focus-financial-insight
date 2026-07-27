@@ -1,18 +1,4 @@
-<<<<<<< HEAD
-import { createFileRoute } from "@tanstack/react-router";
-import { PlaceholderPage } from "@/components/placeholder-page";
-
-export const Route = createFileRoute("/integracoes")({
-  component: () => (
-    <PlaceholderPage
-      title="Integrações"
-      description="Bancos, gateways de pagamento, Open Finance, WhatsApp, Google/Microsoft e ecossistema Focus."
-      features={["BB, Bradesco, Santander, Itaú, Inter, Sicredi", "Asaas, Mercado Pago, Stripe, PIX", "Google Workspace, Microsoft 365, ClickUp", "Focus ERP, CRM, Log, EAD, BI + API/Webhooks"]}
-    />
-  ),
-});
-=======
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HubDashboard } from "@/features/integracoes/components/HubDashboard";
@@ -32,7 +18,7 @@ function IntegrationHubPage() {
 
   return (
     <div className="flex flex-col gap-6 p-6 max-w-[1400px] mx-auto w-full animate-fade-in">
-      {/* Cabeçalho do Hub de Integrações */}
+      {/* CabeÃ§alho do Hub de IntegraÃ§Ãµes */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 flex items-center justify-center shadow-sm">
@@ -40,19 +26,19 @@ function IntegrationHubPage() {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-3xl font-bold tracking-tight">Hub de Integrações</h1>
+              <h1 className="text-3xl font-bold tracking-tight">Hub de IntegraÃ§Ãµes</h1>
               <Badge variant="outline" className="border-orange-500/40 text-orange-600 font-semibold gap-1 bg-orange-50 dark:bg-orange-950/40">
                 <ShieldCheck className="w-3.5 h-3.5" /> Zapier / Power Automate Grade
               </Badge>
             </div>
             <p className="text-muted-foreground mt-1 text-sm">
-              Barramento corporativo desacoplado para conexão com bancos, gateways, Google, Microsoft e serviços externos.
+              Barramento corporativo desacoplado para conexÃ£o com bancos, gateways, Google, Microsoft e serviÃ§os externos.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Navegação por Abas */}
+      {/* NavegaÃ§Ã£o por Abas */}
       <Tabs defaultValue="marketplace" className="space-y-6 mt-2" onValueChange={setActiveTab}>
         <div className="border-b pb-2">
           <TabsList className="bg-muted/50 p-1">
@@ -97,4 +83,3 @@ function IntegrationHubPage() {
     </div>
   );
 }
->>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
