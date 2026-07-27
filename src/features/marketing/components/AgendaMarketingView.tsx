@@ -37,7 +37,7 @@ const COR_POR_TIPO: Record<string, string> = {
   'Publicação': 'bg-sky-500',
 };
 
-const defaultEventos: EventoMarketing[] = [];
+const defaultEventos: EventoMarketing[] = [
   {
     id: 'evt-1', nome: 'Webinar: Gestão Financeira 2027', tipo: 'Webinar', status: 'Em Produção',
     data: '2026-08-05', hora: '19:00', responsavel: 'Beatriz Santos', descricao: 'Webinar mensal para leads e clientes',

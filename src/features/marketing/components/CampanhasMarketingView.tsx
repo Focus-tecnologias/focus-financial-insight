@@ -27,7 +27,7 @@ export interface CampanhaMarketing {
   responsavel: string;
 }
 
-const defaultCampanhas: CampanhaMarketing[] = [];
+const defaultCampanhas: CampanhaMarketing[] = [
   {
     id: 'camp-1',
     nome: 'Black Friday 2026',
