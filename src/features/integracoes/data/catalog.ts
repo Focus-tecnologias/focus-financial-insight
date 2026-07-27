@@ -1,0 +1,285 @@
+import { ConectorDMS } from "../types";
+
+export const INITIAL_CONNECTORS: ConectorDMS[] = [
+  // --- BANCOS & OPEN FINANCE ---
+  {
+    id: "banco-inter",
+    nome: "Banco Inter Empresas",
+    provedor: "Banco Inter S.A.",
+    categoria: "Bancos",
+    descricao: "Emissão de boletos, PIX, extrato automático OFX/API e conciliação bancária.",
+    icone: "Landmark",
+    status: "Conectado",
+    tipoAutenticacao: "OAuth2",
+    pingMs: 42,
+    ultimaSincronizacao: "2026-02-05T14:30:00Z",
+    frequenciaSync: "15min",
+    recursos: ["PIX Direct", "Boletos", "Extrato Automático", "Open Finance"],
+    modulosVinculados: ["Contas a Receber", "Contas a Pagar", "Conciliação"],
+    configuracao: { clientId: "inter_client_9401", ambiente: "Produção", tokensAtivos: 1 }
+  },
+  {
+    id: "itau-empresas",
+    nome: "Itaú Empresas API",
+    provedor: "Itaú Unibanco S.A.",
+    categoria: "Bancos",
+    descricao: "Integração via Open Finance para consulta de saldo, extrato e transferências.",
+    icone: "Building2",
+    status: "Conectado",
+    tipoAutenticacao: "MTLS",
+    pingMs: 58,
+    ultimaSincronizacao: "2026-02-05T12:00:00Z",
+    frequenciaSync: "30min",
+    recursos: ["Extrato API", "Saldos", "Transferências", "Open Banking"],
+    modulosVinculados: ["Conciliação", "Fluxo de Caixa"]
+  },
+  {
+    id: "bradesco-empresas",
+    nome: "Bradesco Empresas",
+    provedor: "Banco Bradesco S.A.",
+    categoria: "Bancos",
+    descricao: "Sincronização bancária direta e liquidação de títulos.",
+    icone: "Landmark",
+    status: "Desconectado",
+    tipoAutenticacao: "OAuth2",
+    frequenciaSync: "Manual",
+    recursos: ["Extrato", "Boletos Híbridos"],
+    modulosVinculados: ["Conciliação"]
+  },
+  {
+    id: "santander-empresas",
+    nome: "Santander Empresas",
+    provedor: "Banco Santander Brasil",
+    categoria: "Bancos",
+    descricao: "Conector Open Banking para leitura de movimentações financeiras.",
+    icone: "Landmark",
+    status: "Desconectado",
+    tipoAutenticacao: "OAuth2",
+    frequenciaSync: "1h",
+    recursos: ["Extrato", "PIX QR Code"],
+    modulosVinculados: ["Contas a Receber"]
+  },
+
+  // --- GATEWAYS DE PAGAMENTO ---
+  {
+    id: "asaas-gateway",
+    nome: "Asaas Financial Hub",
+    provedor: "Asaas Gestão Financeira S.A.",
+    categoria: "Gateways",
+    descricao: "Cobranças recorrentes, carnês, boletos, PIX e cartão de crédito com webhook automático.",
+    icone: "CreditCard",
+    status: "Conectado",
+    pingMs: 35,
+    ultimaSincronizacao: "2026-02-05T14:45:00Z",
+    tipoAutenticacao: "APIKey",
+    frequenciaSync: "5min",
+    recursos: ["Cobrança Recorrente", "PIX Dinâmico", "Webhooks Instantâneos", "Split de Pagamento"],
+    modulosVinculados: ["Cobranças", "Contas a Receber", "Contratos"],
+    configuracao: { apiKey: "$asaas_live_token_9401...", ambiente: "Produção" }
+  },
+  {
+    id: "mercado-pago",
+    nome: "Mercado Pago Integrator",
+    provedor: "Mercado Libre",
+    categoria: "Gateways",
+    descricao: "Checkout transparente, PIX QR Code e relatórios de vendas.",
+    icone: "Wallet",
+    status: "Conectado",
+    pingMs: 40,
+    ultimaSincronizacao: "2026-02-05T13:10:00Z",
+    tipoAutenticacao: "OAuth2",
+    frequenciaSync: "15min",
+    recursos: ["Checkout", "PIX", "Cartões"],
+    modulosVinculados: ["Cobranças", "Comercial"]
+  },
+  {
+    id: "stripe-gateway",
+    nome: "Stripe Enterprise",
+    provedor: "Stripe Inc.",
+    categoria: "Gateways",
+    descricao: "Processamento de pagamentos globais, assinaturas SaaS e faturamento internacional.",
+    icone: "DollarSign",
+    status: "Conectado",
+    pingMs: 65,
+    ultimaSincronizacao: "2026-02-05T10:00:00Z",
+    tipoAutenticacao: "APIKey",
+    frequenciaSync: "15min",
+    recursos: ["Assinaturas SaaS", "Multimoedas", "Webhooks"],
+    modulosVinculados: ["Contratos", "Financeiro"]
+  },
+
+  // --- GOOGLE WORKSPACE ---
+  {
+    id: "google-calendar",
+    nome: "Google Calendar Sync",
+    provedor: "Google LLC",
+    categoria: "Google",
+    descricao: "Sincronização bidirecional das Agendas Comercial, Financeira, Marketing e RH.",
+    icone: "Calendar",
+    status: "Conectado",
+    pingMs: 25,
+    ultimaSincronizacao: "2026-02-05T14:50:00Z",
+    tipoAutenticacao: "OAuth2",
+    frequenciaSync: "5min",
+    recursos: ["Agendamento de Eventos", "Lembretes Financeiros", "Sync RH e Vendas"],
+    modulosVinculados: ["Agenda Financeira", "Comercial", "RH", "Marketing"]
+  },
+  {
+    id: "google-drive",
+    nome: "Google Drive Storage",
+    provedor: "Google LLC",
+    categoria: "Google",
+    descricao: "Backup automático de documentos corporativos e sincronização com o DMS.",
+    icone: "Cloud",
+    status: "Conectado",
+    pingMs: 30,
+    ultimaSincronizacao: "2026-02-05T08:00:00Z",
+    tipoAutenticacao: "OAuth2",
+    frequenciaSync: "1h",
+    recursos: ["Backup em Nuvem", "Exportação de PDFs", "Sincronização DMS"],
+    modulosVinculados: ["Central de Documentos", "Relatórios"]
+  },
+  {
+    id: "gmail-connector",
+    nome: "Gmail Enterprise API",
+    provedor: "Google LLC",
+    categoria: "Google",
+    descricao: "Envio de faturas, avisos de cobrança, notificações e relatórios agendados.",
+    icone: "Mail",
+    status: "Conectado",
+    pingMs: 28,
+    ultimaSincronizacao: "2026-02-05T14:40:00Z",
+    tipoAutenticacao: "OAuth2",
+    frequenciaSync: "Realtime",
+    recursos: ["Disparo de E-mails", "Notificações", "Relatórios Periódicos"],
+    modulosVinculados: ["Cobranças", "Relatórios", "Comercial"]
+  },
+
+  // --- MICROSOFT 365 ---
+  {
+    id: "microsoft-365",
+    nome: "Microsoft 365 & Outlook",
+    provedor: "Microsoft Corporation",
+    categoria: "Microsoft",
+    descricao: "Integração corporativa com Outlook Calendar, OneDrive e SharePoint.",
+    icone: "Windows",
+    status: "Atencao",
+    pingMs: 85,
+    ultimaSincronizacao: "2026-02-04T18:00:00Z",
+    tipoAutenticacao: "OAuth2",
+    frequenciaSync: "30min",
+    recursos: ["Outlook Sync", "OneDrive Backup", "SharePoint Docs"],
+    modulosVinculados: ["Agenda", "Documentos"]
+  },
+
+  // --- GESTÃO DE PROJETOS ---
+  {
+    id: "clickup-connector",
+    nome: "ClickUp Integration Hub",
+    provedor: "ClickUp Inc.",
+    categoria: "Projetos",
+    descricao: "Sincronização de tarefas, prazos, faturamento de projetos e horas apontadas.",
+    icone: "CheckSquare",
+    status: "Conectado",
+    pingMs: 48,
+    ultimaSincronizacao: "2026-02-05T14:20:00Z",
+    tipoAutenticacao: "OAuth2",
+    frequenciaSync: "15min",
+    recursos: ["Criação de Tarefas", "Status Sync", "Prazos de Entrega"],
+    modulosVinculados: ["Projetos", "Comercial"]
+  },
+  {
+    id: "jira-connector",
+    nome: "Jira Software Enterprise",
+    provedor: "Atlassian",
+    categoria: "Projetos",
+    descricao: "Vínculo entre sprints de desenvolvimento e custos dos projetos.",
+    icone: "Kanban",
+    status: "Desconectado",
+    tipoAutenticacao: "APIKey",
+    frequenciaSync: "Manual",
+    recursos: ["Sincronização de Issues", "Gestão de Sprints"],
+    modulosVinculados: ["Projetos"]
+  },
+
+  // --- WHATSAPP BUSINESS ---
+  {
+    id: "whatsapp-business",
+    nome: "WhatsApp Business Official API",
+    provedor: "Meta / Z-API / Evolution",
+    categoria: "WhatsApp",
+    descricao: "Disparo automático de comprovantes, lembretes de vencimento, notas e alertas de cobrança.",
+    icone: "MessageSquare",
+    status: "Conectado",
+    pingMs: 38,
+    ultimaSincronizacao: "2026-02-05T14:52:00Z",
+    tipoAutenticacao: "TokenSecret",
+    frequenciaSync: "Realtime",
+    recursos: ["Alertas de Vencimento", "Envio de Boletos PIX", "Atendimento Comercial"],
+    modulosVinculados: ["Cobranças", "Comercial", "CRM"]
+  },
+
+  // --- ASSINATURA DIGITAL & GOV.BR ---
+  {
+    id: "clicksign-connector",
+    nome: "Clicksign Digital Signature",
+    provedor: "Clicksign Ltda",
+    categoria: "Assinaturas",
+    descricao: "Envio e assinatura eletrônica de contratos de prestação de serviço com validade jurídica.",
+    icone: "FileSignature",
+    status: "Conectado",
+    pingMs: 50,
+    ultimaSincronizacao: "2026-02-05T11:30:00Z",
+    tipoAutenticacao: "APIKey",
+    frequenciaSync: "1h",
+    recursos: ["Assinatura Eletrônica", "Webhook de Conclusão", "Validação ICP-Brasil"],
+    modulosVinculados: ["Contratos", "Documentos"]
+  },
+  {
+    id: "govbr-connector",
+    nome: "GOV.BR Enterprise Sign",
+    provedor: "Governo Federal",
+    categoria: "Gov",
+    descricao: "Autenticação oficial e assinatura digital corporativa com certificado prata/ouro.",
+    icone: "ShieldCheck",
+    status: "Conectado",
+    pingMs: 70,
+    ultimaSincronizacao: "2026-02-05T09:00:00Z",
+    tipoAutenticacao: "OAuth2",
+    frequenciaSync: "Manual",
+    recursos: ["Autenticação GOV.BR", "Assinatura Gratuita GOV.BR"],
+    modulosVinculados: ["Contratos", "Fiscal"]
+  },
+
+  // --- ECOSSISTEMA FOCUS NATIVO ---
+  {
+    id: "focus-erp-native",
+    nome: "Focus ERP Connector",
+    provedor: "Focus Tecnologia",
+    categoria: "Ecossistema Focus",
+    descricao: "Barramento nativo de dados entre o Focus Finance e a suíte ERP Corporativa.",
+    icone: "Cpu",
+    status: "Conectado",
+    pingMs: 5,
+    ultimaSincronizacao: "2026-02-05T14:55:00Z",
+    tipoAutenticacao: "TokenSecret",
+    frequenciaSync: "Realtime",
+    recursos: ["Sincronização Total", "Estoque & Compras", "Fiscal Unificado"],
+    modulosVinculados: ["Todos os Módulos"]
+  },
+  {
+    id: "focus-crm-native",
+    nome: "Focus CRM Engine",
+    provedor: "Focus Tecnologia",
+    categoria: "Ecossistema Focus",
+    descricao: "Conversão automática de oportunidades ganhas em Contratos e Títulos a Receber.",
+    icone: "Users",
+    status: "Conectado",
+    pingMs: 6,
+    ultimaSincronizacao: "2026-02-05T14:55:00Z",
+    tipoAutenticacao: "TokenSecret",
+    frequenciaSync: "Realtime",
+    recursos: ["Funil de Vendas", "Conversão de Leads", "Automação de Contratos"],
+    modulosVinculados: ["Comercial", "CRM", "Contas a Receber"]
+  }
+];

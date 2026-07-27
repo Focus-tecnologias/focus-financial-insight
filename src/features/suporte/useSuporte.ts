@@ -1,0 +1,259 @@
+import { useLocalStorageState } from '@/hooks/useDataStore';
+import { DEFAULT_KB_ARTICLES, DEFAULT_TICKETS } from './defaultData';
+import {
+  ChamadoSuporte,
+  MensagemChamado,
+  TimelineSuporte,
+  ArtigoConhecimento,
+  TipoChamado,
+  StatusChamado,
+  PrioridadeChamado,
+} from './types';
+import { Cliente } from '../clientes/types';
+import { ProdutoFocus } from '../produtos/types';
+import { Projeto } from '../projetos/types';
+import { CsCustomer } from '../customerSuccess/types';
+import { ItemBacklog, BugItem } from '../desenvolvimento/types';
+
+export function useSuporte() {
+  const {
+    data: chamados,
+    addItem: addChamado,
+    updateItem: updateChamado,
+    deleteItem: deleteChamado,
+    save: saveChamados,
+  } = useLocalStorageState<ChamadoSuporte>('focus_suporte_chamados', DEFAULT_TICKETS);
+
+  const {
+    data: artigosKB,
+    addItem: addArtigoKB,
+    updateItem: updateArtigoKB,
+    save: saveKB,
+  } = useLocalStorageState<ArtigoConhecimento>('focus_suporte_kb', DEFAULT_KB_ARTICLES);
+
+  const {
+    data: mensagens,
+    addItem: addMensagem,
+    save: saveMensagens,
+  } = useLocalStorageState<MensagemChamado>('focus_suporte_mensagens', [
+    {
+      id: 'msg-1',
+      chamadoId: 'tk-1001',
+      autorNome: 'Carlos Andrade (CTO)',
+      autorPapel: 'Cliente',
+      conteudo: 'Olá equipe de suporte! Identificamos que na nota fiscal de serviços emitida para SP a alíquota saiu 5% em vez de 2%. Podem verificar?',
+      tipoMensagem: 'Publico',
+      dataHora: '2026-07-24T09:30:00.000Z',
+    },
+    {
+      id: 'msg-2',
+      chamadoId: 'tk-1001',
+      autorNome: 'Ana Clara (Nível 2)',
+      autorPapel: 'Suporte',
+      conteudo: 'Olá Carlos! Analisamos a parametrização e identificamos que o código do serviço no cadastro do item precisa de um ajuste na alíquota reduzida. Já estamos tratando.',
+      tipoMensagem: 'Publico',
+      dataHora: '2026-07-24T10:15:00.000Z',
+    },
+  ]);
+
+  const {
+    data: timelineEvents,
+    addItem: addTimelineEvent,
+    save: saveTimeline,
+  } = useLocalStorageState<TimelineSuporte>('focus_suporte_timeline', [
+    {
+      id: 'tl-1',
+      chamadoId: 'tk-1001',
+      dataHora: '2026-07-24T09:30:00.000Z',
+      tipoEvento: 'Abertura',
+      usuario: 'Carlos Andrade (Cliente)',
+      descricao: 'Chamado aberto pelo cliente via Portal / E-mail',
+    },
+    {
+      id: 'tl-2',
+      chamadoId: 'tk-1001',
+      dataHora: '2026-07-24T10:15:00.000Z',
+      tipoEvento: 'Atribuição',
+      usuario: 'Ana Clara (Suporte)',
+      descricao: 'Chamado atribuído a Ana Clara. Primeira resposta registrada.',
+    },
+  ]);
+
+  // Consumir coleções de Clientes, Produtos, Projetos, CS e Dev
+  const { data: clientes } = useLocalStorageState<Cliente>('focus_clientes', []);
+  const { data: produtos } = useLocalStorageState<ProdutoFocus>('focus_produtos', []);
+  const { data: projetos } = useLocalStorageState<Projeto>('focus_projetos', []);
+  const { data: csCustomers } = useLocalStorageState<CsCustomer>('focus_cs_customers', []);
+
+  const { data: devBacklog, addItem: addDevBacklogItem } = useLocalStorageState<ItemBacklog>('focus_dev_backlog', []);
+  const { data: devBugs, addItem: addDevBugItem } = useLocalStorageState<BugItem>('focus_dev_bugs', []);
+
+  // Criar Novo Chamado no Service Desk
+  const abrirNovoChamado = (c: Omit<ChamadoSuporte, 'id' | 'numero' | 'dataAbertura' | 'slaStatus' | 'updatedAt'>) => {
+    const nextNum = 1000 + chamados.length + 1;
+    const id = `tk-${nextNum}`;
+    const numero = `TK-${nextNum}`;
+
+    const dataAbertura = new Date().toISOString();
+    const dataLimiteResolucao = new Date(Date.now() + (c.slaHorasResolucao || 24) * 3600000).toISOString();
+
+    const novo: ChamadoSuporte = {
+      ...c,
+      id,
+      numero,
+      dataAbertura,
+      dataLimiteResolucao,
+      slaStatus: 'Em Dia',
+      updatedAt: dataAbertura,
+    };
+
+    addChamado(novo);
+
+    addTimelineEvent({
+      id: `tl-${Date.now()}`,
+      chamadoId: id,
+      dataHora: dataAbertura,
+      tipoEvento: 'Abertura',
+      usuario: c.contatoNome || 'Cliente',
+      descricao: `Chamado ${numero} aberto com prioridade [${c.prioridade}]`,
+    });
+
+    return id;
+  };
+
+  // Enviar Mensagem / Resposta em Chamado
+  const responderChamado = (
+    chamadoId: string,
+    conteudo: string,
+    tipoMensagem: MensagemChamado['tipoMensagem'],
+    autorNome: string = 'Atendente Suporte',
+    novoStatus?: StatusChamado
+  ) => {
+    const chamado = chamados.find((c) => c.id === chamadoId);
+    if (!chamado) return;
+
+    const newMsg: MensagemChamado = {
+      id: `msg-${Date.now()}`,
+      chamadoId,
+      autorNome,
+      autorPapel: tipoMensagem === 'Nota Interna' ? 'Suporte' : 'Suporte',
+      conteudo,
+      tipoMensagem,
+      dataHora: new Date().toISOString(),
+    };
+    addMensagem(newMsg);
+
+    const updatePayload: Partial<ChamadoSuporte> = {
+      updatedAt: new Date().toISOString(),
+    };
+
+    if (!chamado.dataPrimeiraResposta) {
+      updatePayload.dataPrimeiraResposta = new Date().toISOString();
+    }
+
+    if (novoStatus) {
+      updatePayload.status = novoStatus;
+      if (novoStatus === 'Resolvido' || novoStatus === 'Fechado') {
+        updatePayload.dataResolucao = new Date().toISOString();
+        updatePayload.slaStatus = 'Cumprido';
+      }
+    }
+
+    updateChamado(chamadoId, updatePayload);
+
+    addTimelineEvent({
+      id: `tl-${Date.now()}`,
+      chamadoId,
+      dataHora: new Date().toISOString(),
+      tipoEvento: 'Comentário',
+      usuario: autorNome,
+      descricao: `Interação adicionada (${tipoMensagem}). Status: ${novoStatus || chamado.status}`,
+    });
+  };
+
+  // CONVERTER CHAMADO EM TAREFA NO MÓDULO DESENVOLVIMENTO (INTEGRAÇÃO NATIVA SUPORTE -> DEV)
+  const converterEmTarefaDev = (chamadoId: string, projetoIdTarget: string) => {
+    const chamado = chamados.find((c) => c.id === chamadoId);
+    if (!chamado) return;
+
+    const targetProj = projetos.find((p) => p.id === projetoIdTarget);
+    const projNome = targetProj ? targetProj.nome : 'Projeto de Software';
+
+    const taskId = `dev-from-tk-${Date.now()}`;
+    const taskTitulo = `[Suporte ${chamado.numero}] ${chamado.titulo}`;
+
+    if (chamado.tipo === 'Bug' || chamado.tipo === 'Incidente' || chamado.tipo === 'Correção') {
+      // Cria Bug no Módulo Desenvolvimento
+      const newBug: BugItem = {
+        id: taskId,
+        projetoId: projetoIdTarget,
+        titulo: taskTitulo,
+        descricao: `Oriundo do Chamado ${chamado.numero} (${chamado.clienteNome}). Descrição: ${chamado.descricao}`,
+        severidade: chamado.prioridade === 'Crítica' ? 'Crítico' : chamado.prioridade === 'Alta' ? 'Alto' : 'Médio',
+        prioridade: chamado.prioridade,
+        ambiente: 'Produção',
+        responsavel: 'Dev Team',
+        status: 'Aberto',
+        createdAt: new Date().toISOString(),
+      };
+      addDevBugItem(newBug);
+    } else {
+      // Cria Item no Backlog
+      const newBacklog: ItemBacklog = {
+        id: taskId,
+        projetoId: projetoIdTarget,
+        tipoItem: chamado.tipo === 'Nova Funcionalidade' ? 'Funcionalidade' : 'Melhoria',
+        titulo: taskTitulo,
+        descricao: `Solicitação do cliente ${chamado.clienteNome} via Chamado ${chamado.numero}. ${chamado.descricao}`,
+        prioridade: chamado.prioridade,
+        status: 'Backlog',
+        responsavel: 'Product Owner',
+        storyPoints: 5,
+        createdAt: new Date().toISOString(),
+      };
+      addDevBacklogItem(newBacklog);
+    }
+
+    // Atualiza Chamado com vínculo direto
+    updateChamado(chamadoId, {
+      status: 'Em Desenvolvimento',
+      devTaskId: taskId,
+      devTaskStatus: 'Em Desenvolvimento',
+      devTaskTitulo: taskTitulo,
+      githubRepoUrl: `https://github.com/focustecnologia/${projNome.toLowerCase().replace(/\s+/g, '-')}`,
+      updatedAt: new Date().toISOString(),
+    });
+
+    addTimelineEvent({
+      id: `tl-${Date.now()}`,
+      chamadoId,
+      dataHora: new Date().toISOString(),
+      tipoEvento: 'DevSync',
+      usuario: 'Suporte Integration',
+      descricao: `Demanda de engenharia criada no módulo Desenvolvimento (Task ID: ${taskId}) para o projeto ${projNome}`,
+    });
+  };
+
+  // Contexto CS do Cliente do Chamado
+  const getCsContextDoCliente = (clienteId: string) => {
+    return csCustomers.find((cs) => cs.client_id === clienteId);
+  };
+
+  return {
+    chamados,
+    clientes,
+    produtos,
+    projetos,
+    csCustomers,
+    artigosKB,
+    mensagens,
+    timelineEvents,
+    abrirNovoChamado,
+    responderChamado,
+    converterEmTarefaDev,
+    getCsContextDoCliente,
+    updateChamado,
+    deleteChamado,
+    addArtigoKB,
+  };
+}

@@ -16,24 +16,54 @@ import { Route as CategoriasRouteImport } from './routes/categorias'
 import { Route as CentroDeCustosRouteImport } from './routes/centro-de-custos'
 import { Route as ClientesRouteImport } from './routes/clientes'
 import { Route as CobrancasRouteImport } from './routes/cobrancas'
+<<<<<<< HEAD
+=======
+import { Route as ComercialRouteImport } from './routes/comercial'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 import { Route as ConciliacaoRouteImport } from './routes/conciliacao'
 import { Route as ConfiguracoesRouteImport } from './routes/configuracoes'
 import { Route as ContasAPagarRouteImport } from './routes/contas-a-pagar'
 import { Route as ContasAReceberRouteImport } from './routes/contas-a-receber'
 import { Route as ContratosRouteImport } from './routes/contratos'
+<<<<<<< HEAD
 import { Route as DocumentosRouteImport } from './routes/documentos'
 import { Route as DreRouteImport } from './routes/dre'
+=======
+import { Route as CrmRouteImport } from './routes/crm'
+import { Route as CustomerSuccessRouteImport } from './routes/customer-success'
+import { Route as DesenvolvimentoRouteImport } from './routes/desenvolvimento'
+import { Route as DocumentosRouteImport } from './routes/documentos'
+import { Route as DreRouteImport } from './routes/dre'
+import { Route as EstoqueRouteImport } from './routes/estoque'
+import { Route as FiscalRouteImport } from './routes/fiscal'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 import { Route as FluxoDeCaixaRouteImport } from './routes/fluxo-de-caixa'
 import { Route as FornecedoresRouteImport } from './routes/fornecedores'
 import { Route as IaFinanceiraRouteImport } from './routes/ia-financeira'
 import { Route as IndicadoresRouteImport } from './routes/indicadores'
 import { Route as IntegracoesRouteImport } from './routes/integracoes'
 import { Route as LogsRouteImport } from './routes/logs'
+<<<<<<< HEAD
+=======
+import { Route as MarketingRouteImport } from './routes/marketing'
+import { Route as NotificacoesRouteImport } from './routes/notificacoes'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 import { Route as PermissoesRouteImport } from './routes/permissoes'
 import { Route as ProdutosRouteImport } from './routes/produtos'
 import { Route as ProjetosRouteImport } from './routes/projetos'
 import { Route as RelatoriosRouteImport } from './routes/relatorios'
+<<<<<<< HEAD
 import { Route as UsuariosRouteImport } from './routes/usuarios'
+=======
+import { Route as RhRouteImport } from './routes/rh'
+import { Route as SuporteRouteImport } from './routes/suporte'
+import { Route as UsuariosRouteImport } from './routes/usuarios'
+import { Route as CentroDeCustosCentroIdRouteImport } from './routes/centro-de-custos_.$centroId'
+import { Route as ClientesClienteIdRouteImport } from './routes/clientes/$clienteId'
+import { Route as ContratosContratoIdRouteImport } from './routes/contratos_.$contratoId'
+import { Route as EstoqueSplatRouteImport } from './routes/estoque.$'
+import { Route as ProjetosProjetoIdRouteImport } from './routes/projetos/$projetoId'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -70,6 +100,14 @@ const CobrancasRoute = CobrancasRouteImport.update({
   path: '/cobrancas',
   getParentRoute: () => rootRouteImport,
 } as any)
+<<<<<<< HEAD
+=======
+const ComercialRoute = ComercialRouteImport.update({
+  id: '/comercial',
+  path: '/comercial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 const ConciliacaoRoute = ConciliacaoRouteImport.update({
   id: '/conciliacao',
   path: '/conciliacao',
@@ -95,6 +133,24 @@ const ContratosRoute = ContratosRouteImport.update({
   path: '/contratos',
   getParentRoute: () => rootRouteImport,
 } as any)
+<<<<<<< HEAD
+=======
+const CrmRoute = CrmRouteImport.update({
+  id: '/crm',
+  path: '/crm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerSuccessRoute = CustomerSuccessRouteImport.update({
+  id: '/customer-success',
+  path: '/customer-success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesenvolvimentoRoute = DesenvolvimentoRouteImport.update({
+  id: '/desenvolvimento',
+  path: '/desenvolvimento',
+  getParentRoute: () => rootRouteImport,
+} as any)
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 const DocumentosRoute = DocumentosRouteImport.update({
   id: '/documentos',
   path: '/documentos',
@@ -105,6 +161,19 @@ const DreRoute = DreRouteImport.update({
   path: '/dre',
   getParentRoute: () => rootRouteImport,
 } as any)
+<<<<<<< HEAD
+=======
+const EstoqueRoute = EstoqueRouteImport.update({
+  id: '/estoque',
+  path: '/estoque',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FiscalRoute = FiscalRouteImport.update({
+  id: '/fiscal',
+  path: '/fiscal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 const FluxoDeCaixaRoute = FluxoDeCaixaRouteImport.update({
   id: '/fluxo-de-caixa',
   path: '/fluxo-de-caixa',
@@ -135,6 +204,19 @@ const LogsRoute = LogsRouteImport.update({
   path: '/logs',
   getParentRoute: () => rootRouteImport,
 } as any)
+<<<<<<< HEAD
+=======
+const MarketingRoute = MarketingRouteImport.update({
+  id: '/marketing',
+  path: '/marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificacoesRoute = NotificacoesRouteImport.update({
+  id: '/notificacoes',
+  path: '/notificacoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 const PermissoesRoute = PermissoesRouteImport.update({
   id: '/permissoes',
   path: '/permissoes',
@@ -155,11 +237,52 @@ const RelatoriosRoute = RelatoriosRouteImport.update({
   path: '/relatorios',
   getParentRoute: () => rootRouteImport,
 } as any)
+<<<<<<< HEAD
+=======
+const RhRoute = RhRouteImport.update({
+  id: '/rh',
+  path: '/rh',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuporteRoute = SuporteRouteImport.update({
+  id: '/suporte',
+  path: '/suporte',
+  getParentRoute: () => rootRouteImport,
+} as any)
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 const UsuariosRoute = UsuariosRouteImport.update({
   id: '/usuarios',
   path: '/usuarios',
   getParentRoute: () => rootRouteImport,
 } as any)
+<<<<<<< HEAD
+=======
+const CentroDeCustosCentroIdRoute = CentroDeCustosCentroIdRouteImport.update({
+  id: '/centro-de-custos_/$centroId',
+  path: '/centro-de-custos/$centroId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientesClienteIdRoute = ClientesClienteIdRouteImport.update({
+  id: '/$clienteId',
+  path: '/$clienteId',
+  getParentRoute: () => ClientesRoute,
+} as any)
+const ContratosContratoIdRoute = ContratosContratoIdRouteImport.update({
+  id: '/contratos_/$contratoId',
+  path: '/contratos/$contratoId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EstoqueSplatRoute = EstoqueSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => EstoqueRoute,
+} as any)
+const ProjetosProjetoIdRoute = ProjetosProjetoIdRouteImport.update({
+  id: '/$projetoId',
+  path: '/$projetoId',
+  getParentRoute: () => ProjetosRoute,
+} as any)
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -167,26 +290,59 @@ export interface FileRoutesByFullPath {
   '/assinaturas': typeof AssinaturasRoute
   '/categorias': typeof CategoriasRoute
   '/centro-de-custos': typeof CentroDeCustosRoute
+<<<<<<< HEAD
   '/clientes': typeof ClientesRoute
   '/cobrancas': typeof CobrancasRoute
+=======
+  '/clientes': typeof ClientesRouteWithChildren
+  '/cobrancas': typeof CobrancasRoute
+  '/comercial': typeof ComercialRoute
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
   '/conciliacao': typeof ConciliacaoRoute
   '/configuracoes': typeof ConfiguracoesRoute
   '/contas-a-pagar': typeof ContasAPagarRoute
   '/contas-a-receber': typeof ContasAReceberRoute
   '/contratos': typeof ContratosRoute
+<<<<<<< HEAD
   '/documentos': typeof DocumentosRoute
   '/dre': typeof DreRoute
+=======
+  '/crm': typeof CrmRoute
+  '/customer-success': typeof CustomerSuccessRoute
+  '/desenvolvimento': typeof DesenvolvimentoRoute
+  '/documentos': typeof DocumentosRoute
+  '/dre': typeof DreRoute
+  '/estoque': typeof EstoqueRouteWithChildren
+  '/fiscal': typeof FiscalRoute
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
   '/fluxo-de-caixa': typeof FluxoDeCaixaRoute
   '/fornecedores': typeof FornecedoresRoute
   '/ia-financeira': typeof IaFinanceiraRoute
   '/indicadores': typeof IndicadoresRoute
   '/integracoes': typeof IntegracoesRoute
   '/logs': typeof LogsRoute
+<<<<<<< HEAD
   '/permissoes': typeof PermissoesRoute
   '/produtos': typeof ProdutosRoute
   '/projetos': typeof ProjetosRoute
   '/relatorios': typeof RelatoriosRoute
   '/usuarios': typeof UsuariosRoute
+=======
+  '/marketing': typeof MarketingRoute
+  '/notificacoes': typeof NotificacoesRoute
+  '/permissoes': typeof PermissoesRoute
+  '/produtos': typeof ProdutosRoute
+  '/projetos': typeof ProjetosRouteWithChildren
+  '/relatorios': typeof RelatoriosRoute
+  '/rh': typeof RhRoute
+  '/suporte': typeof SuporteRoute
+  '/usuarios': typeof UsuariosRoute
+  '/centro-de-custos/$centroId': typeof CentroDeCustosCentroIdRoute
+  '/clientes/$clienteId': typeof ClientesClienteIdRoute
+  '/contratos/$contratoId': typeof ContratosContratoIdRoute
+  '/estoque/$': typeof EstoqueSplatRoute
+  '/projetos/$projetoId': typeof ProjetosProjetoIdRoute
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -194,26 +350,59 @@ export interface FileRoutesByTo {
   '/assinaturas': typeof AssinaturasRoute
   '/categorias': typeof CategoriasRoute
   '/centro-de-custos': typeof CentroDeCustosRoute
+<<<<<<< HEAD
   '/clientes': typeof ClientesRoute
   '/cobrancas': typeof CobrancasRoute
+=======
+  '/clientes': typeof ClientesRouteWithChildren
+  '/cobrancas': typeof CobrancasRoute
+  '/comercial': typeof ComercialRoute
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
   '/conciliacao': typeof ConciliacaoRoute
   '/configuracoes': typeof ConfiguracoesRoute
   '/contas-a-pagar': typeof ContasAPagarRoute
   '/contas-a-receber': typeof ContasAReceberRoute
   '/contratos': typeof ContratosRoute
+<<<<<<< HEAD
   '/documentos': typeof DocumentosRoute
   '/dre': typeof DreRoute
+=======
+  '/crm': typeof CrmRoute
+  '/customer-success': typeof CustomerSuccessRoute
+  '/desenvolvimento': typeof DesenvolvimentoRoute
+  '/documentos': typeof DocumentosRoute
+  '/dre': typeof DreRoute
+  '/estoque': typeof EstoqueRouteWithChildren
+  '/fiscal': typeof FiscalRoute
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
   '/fluxo-de-caixa': typeof FluxoDeCaixaRoute
   '/fornecedores': typeof FornecedoresRoute
   '/ia-financeira': typeof IaFinanceiraRoute
   '/indicadores': typeof IndicadoresRoute
   '/integracoes': typeof IntegracoesRoute
   '/logs': typeof LogsRoute
+<<<<<<< HEAD
   '/permissoes': typeof PermissoesRoute
   '/produtos': typeof ProdutosRoute
   '/projetos': typeof ProjetosRoute
   '/relatorios': typeof RelatoriosRoute
   '/usuarios': typeof UsuariosRoute
+=======
+  '/marketing': typeof MarketingRoute
+  '/notificacoes': typeof NotificacoesRoute
+  '/permissoes': typeof PermissoesRoute
+  '/produtos': typeof ProdutosRoute
+  '/projetos': typeof ProjetosRouteWithChildren
+  '/relatorios': typeof RelatoriosRoute
+  '/rh': typeof RhRoute
+  '/suporte': typeof SuporteRoute
+  '/usuarios': typeof UsuariosRoute
+  '/centro-de-custos/$centroId': typeof CentroDeCustosCentroIdRoute
+  '/clientes/$clienteId': typeof ClientesClienteIdRoute
+  '/contratos/$contratoId': typeof ContratosContratoIdRoute
+  '/estoque/$': typeof EstoqueSplatRoute
+  '/projetos/$projetoId': typeof ProjetosProjetoIdRoute
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -222,26 +411,59 @@ export interface FileRoutesById {
   '/assinaturas': typeof AssinaturasRoute
   '/categorias': typeof CategoriasRoute
   '/centro-de-custos': typeof CentroDeCustosRoute
+<<<<<<< HEAD
   '/clientes': typeof ClientesRoute
   '/cobrancas': typeof CobrancasRoute
+=======
+  '/clientes': typeof ClientesRouteWithChildren
+  '/cobrancas': typeof CobrancasRoute
+  '/comercial': typeof ComercialRoute
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
   '/conciliacao': typeof ConciliacaoRoute
   '/configuracoes': typeof ConfiguracoesRoute
   '/contas-a-pagar': typeof ContasAPagarRoute
   '/contas-a-receber': typeof ContasAReceberRoute
   '/contratos': typeof ContratosRoute
+<<<<<<< HEAD
   '/documentos': typeof DocumentosRoute
   '/dre': typeof DreRoute
+=======
+  '/crm': typeof CrmRoute
+  '/customer-success': typeof CustomerSuccessRoute
+  '/desenvolvimento': typeof DesenvolvimentoRoute
+  '/documentos': typeof DocumentosRoute
+  '/dre': typeof DreRoute
+  '/estoque': typeof EstoqueRouteWithChildren
+  '/fiscal': typeof FiscalRoute
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
   '/fluxo-de-caixa': typeof FluxoDeCaixaRoute
   '/fornecedores': typeof FornecedoresRoute
   '/ia-financeira': typeof IaFinanceiraRoute
   '/indicadores': typeof IndicadoresRoute
   '/integracoes': typeof IntegracoesRoute
   '/logs': typeof LogsRoute
+<<<<<<< HEAD
   '/permissoes': typeof PermissoesRoute
   '/produtos': typeof ProdutosRoute
   '/projetos': typeof ProjetosRoute
   '/relatorios': typeof RelatoriosRoute
   '/usuarios': typeof UsuariosRoute
+=======
+  '/marketing': typeof MarketingRoute
+  '/notificacoes': typeof NotificacoesRoute
+  '/permissoes': typeof PermissoesRoute
+  '/produtos': typeof ProdutosRoute
+  '/projetos': typeof ProjetosRouteWithChildren
+  '/relatorios': typeof RelatoriosRoute
+  '/rh': typeof RhRoute
+  '/suporte': typeof SuporteRoute
+  '/usuarios': typeof UsuariosRoute
+  '/centro-de-custos_/$centroId': typeof CentroDeCustosCentroIdRoute
+  '/clientes/$clienteId': typeof ClientesClienteIdRoute
+  '/contratos_/$contratoId': typeof ContratosContratoIdRoute
+  '/estoque/$': typeof EstoqueSplatRoute
+  '/projetos/$projetoId': typeof ProjetosProjetoIdRoute
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -253,24 +475,54 @@ export interface FileRouteTypes {
     | '/centro-de-custos'
     | '/clientes'
     | '/cobrancas'
+<<<<<<< HEAD
+=======
+    | '/comercial'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
     | '/conciliacao'
     | '/configuracoes'
     | '/contas-a-pagar'
     | '/contas-a-receber'
     | '/contratos'
+<<<<<<< HEAD
     | '/documentos'
     | '/dre'
+=======
+    | '/crm'
+    | '/customer-success'
+    | '/desenvolvimento'
+    | '/documentos'
+    | '/dre'
+    | '/estoque'
+    | '/fiscal'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
     | '/fluxo-de-caixa'
     | '/fornecedores'
     | '/ia-financeira'
     | '/indicadores'
     | '/integracoes'
     | '/logs'
+<<<<<<< HEAD
+=======
+    | '/marketing'
+    | '/notificacoes'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
     | '/permissoes'
     | '/produtos'
     | '/projetos'
     | '/relatorios'
+<<<<<<< HEAD
     | '/usuarios'
+=======
+    | '/rh'
+    | '/suporte'
+    | '/usuarios'
+    | '/centro-de-custos/$centroId'
+    | '/clientes/$clienteId'
+    | '/contratos/$contratoId'
+    | '/estoque/$'
+    | '/projetos/$projetoId'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -280,24 +532,54 @@ export interface FileRouteTypes {
     | '/centro-de-custos'
     | '/clientes'
     | '/cobrancas'
+<<<<<<< HEAD
+=======
+    | '/comercial'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
     | '/conciliacao'
     | '/configuracoes'
     | '/contas-a-pagar'
     | '/contas-a-receber'
     | '/contratos'
+<<<<<<< HEAD
     | '/documentos'
     | '/dre'
+=======
+    | '/crm'
+    | '/customer-success'
+    | '/desenvolvimento'
+    | '/documentos'
+    | '/dre'
+    | '/estoque'
+    | '/fiscal'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
     | '/fluxo-de-caixa'
     | '/fornecedores'
     | '/ia-financeira'
     | '/indicadores'
     | '/integracoes'
     | '/logs'
+<<<<<<< HEAD
+=======
+    | '/marketing'
+    | '/notificacoes'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
     | '/permissoes'
     | '/produtos'
     | '/projetos'
     | '/relatorios'
+<<<<<<< HEAD
     | '/usuarios'
+=======
+    | '/rh'
+    | '/suporte'
+    | '/usuarios'
+    | '/centro-de-custos/$centroId'
+    | '/clientes/$clienteId'
+    | '/contratos/$contratoId'
+    | '/estoque/$'
+    | '/projetos/$projetoId'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
   id:
     | '__root__'
     | '/'
@@ -307,24 +589,54 @@ export interface FileRouteTypes {
     | '/centro-de-custos'
     | '/clientes'
     | '/cobrancas'
+<<<<<<< HEAD
+=======
+    | '/comercial'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
     | '/conciliacao'
     | '/configuracoes'
     | '/contas-a-pagar'
     | '/contas-a-receber'
     | '/contratos'
+<<<<<<< HEAD
     | '/documentos'
     | '/dre'
+=======
+    | '/crm'
+    | '/customer-success'
+    | '/desenvolvimento'
+    | '/documentos'
+    | '/dre'
+    | '/estoque'
+    | '/fiscal'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
     | '/fluxo-de-caixa'
     | '/fornecedores'
     | '/ia-financeira'
     | '/indicadores'
     | '/integracoes'
     | '/logs'
+<<<<<<< HEAD
+=======
+    | '/marketing'
+    | '/notificacoes'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
     | '/permissoes'
     | '/produtos'
     | '/projetos'
     | '/relatorios'
+<<<<<<< HEAD
     | '/usuarios'
+=======
+    | '/rh'
+    | '/suporte'
+    | '/usuarios'
+    | '/centro-de-custos_/$centroId'
+    | '/clientes/$clienteId'
+    | '/contratos_/$contratoId'
+    | '/estoque/$'
+    | '/projetos/$projetoId'
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -333,26 +645,56 @@ export interface RootRouteChildren {
   AssinaturasRoute: typeof AssinaturasRoute
   CategoriasRoute: typeof CategoriasRoute
   CentroDeCustosRoute: typeof CentroDeCustosRoute
+<<<<<<< HEAD
   ClientesRoute: typeof ClientesRoute
   CobrancasRoute: typeof CobrancasRoute
+=======
+  ClientesRoute: typeof ClientesRouteWithChildren
+  CobrancasRoute: typeof CobrancasRoute
+  ComercialRoute: typeof ComercialRoute
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
   ConciliacaoRoute: typeof ConciliacaoRoute
   ConfiguracoesRoute: typeof ConfiguracoesRoute
   ContasAPagarRoute: typeof ContasAPagarRoute
   ContasAReceberRoute: typeof ContasAReceberRoute
   ContratosRoute: typeof ContratosRoute
+<<<<<<< HEAD
   DocumentosRoute: typeof DocumentosRoute
   DreRoute: typeof DreRoute
+=======
+  CrmRoute: typeof CrmRoute
+  CustomerSuccessRoute: typeof CustomerSuccessRoute
+  DesenvolvimentoRoute: typeof DesenvolvimentoRoute
+  DocumentosRoute: typeof DocumentosRoute
+  DreRoute: typeof DreRoute
+  EstoqueRoute: typeof EstoqueRouteWithChildren
+  FiscalRoute: typeof FiscalRoute
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
   FluxoDeCaixaRoute: typeof FluxoDeCaixaRoute
   FornecedoresRoute: typeof FornecedoresRoute
   IaFinanceiraRoute: typeof IaFinanceiraRoute
   IndicadoresRoute: typeof IndicadoresRoute
   IntegracoesRoute: typeof IntegracoesRoute
   LogsRoute: typeof LogsRoute
+<<<<<<< HEAD
   PermissoesRoute: typeof PermissoesRoute
   ProdutosRoute: typeof ProdutosRoute
   ProjetosRoute: typeof ProjetosRoute
   RelatoriosRoute: typeof RelatoriosRoute
   UsuariosRoute: typeof UsuariosRoute
+=======
+  MarketingRoute: typeof MarketingRoute
+  NotificacoesRoute: typeof NotificacoesRoute
+  PermissoesRoute: typeof PermissoesRoute
+  ProdutosRoute: typeof ProdutosRoute
+  ProjetosRoute: typeof ProjetosRouteWithChildren
+  RelatoriosRoute: typeof RelatoriosRoute
+  RhRoute: typeof RhRoute
+  SuporteRoute: typeof SuporteRoute
+  UsuariosRoute: typeof UsuariosRoute
+  CentroDeCustosCentroIdRoute: typeof CentroDeCustosCentroIdRoute
+  ContratosContratoIdRoute: typeof ContratosContratoIdRoute
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 }
 
 declare module '@tanstack/react-router' {
@@ -406,6 +748,16 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CobrancasRouteImport
       parentRoute: typeof rootRouteImport
     }
+<<<<<<< HEAD
+=======
+    '/comercial': {
+      id: '/comercial'
+      path: '/comercial'
+      fullPath: '/comercial'
+      preLoaderRoute: typeof ComercialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
     '/conciliacao': {
       id: '/conciliacao'
       path: '/conciliacao'
@@ -441,6 +793,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContratosRouteImport
       parentRoute: typeof rootRouteImport
     }
+<<<<<<< HEAD
+=======
+    '/crm': {
+      id: '/crm'
+      path: '/crm'
+      fullPath: '/crm'
+      preLoaderRoute: typeof CrmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer-success': {
+      id: '/customer-success'
+      path: '/customer-success'
+      fullPath: '/customer-success'
+      preLoaderRoute: typeof CustomerSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/desenvolvimento': {
+      id: '/desenvolvimento'
+      path: '/desenvolvimento'
+      fullPath: '/desenvolvimento'
+      preLoaderRoute: typeof DesenvolvimentoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
     '/documentos': {
       id: '/documentos'
       path: '/documentos'
@@ -455,6 +831,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DreRouteImport
       parentRoute: typeof rootRouteImport
     }
+<<<<<<< HEAD
+=======
+    '/estoque': {
+      id: '/estoque'
+      path: '/estoque'
+      fullPath: '/estoque'
+      preLoaderRoute: typeof EstoqueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fiscal': {
+      id: '/fiscal'
+      path: '/fiscal'
+      fullPath: '/fiscal'
+      preLoaderRoute: typeof FiscalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
     '/fluxo-de-caixa': {
       id: '/fluxo-de-caixa'
       path: '/fluxo-de-caixa'
@@ -497,6 +890,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LogsRouteImport
       parentRoute: typeof rootRouteImport
     }
+<<<<<<< HEAD
+=======
+    '/marketing': {
+      id: '/marketing'
+      path: '/marketing'
+      fullPath: '/marketing'
+      preLoaderRoute: typeof MarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notificacoes': {
+      id: '/notificacoes'
+      path: '/notificacoes'
+      fullPath: '/notificacoes'
+      preLoaderRoute: typeof NotificacoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
     '/permissoes': {
       id: '/permissoes'
       path: '/permissoes'
@@ -525,6 +935,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RelatoriosRouteImport
       parentRoute: typeof rootRouteImport
     }
+<<<<<<< HEAD
+=======
+    '/rh': {
+      id: '/rh'
+      path: '/rh'
+      fullPath: '/rh'
+      preLoaderRoute: typeof RhRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/suporte': {
+      id: '/suporte'
+      path: '/suporte'
+      fullPath: '/suporte'
+      preLoaderRoute: typeof SuporteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
     '/usuarios': {
       id: '/usuarios'
       path: '/usuarios'
@@ -532,35 +959,141 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsuariosRouteImport
       parentRoute: typeof rootRouteImport
     }
+<<<<<<< HEAD
   }
 }
 
+=======
+    '/centro-de-custos_/$centroId': {
+      id: '/centro-de-custos_/$centroId'
+      path: '/centro-de-custos/$centroId'
+      fullPath: '/centro-de-custos/$centroId'
+      preLoaderRoute: typeof CentroDeCustosCentroIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clientes/$clienteId': {
+      id: '/clientes/$clienteId'
+      path: '/$clienteId'
+      fullPath: '/clientes/$clienteId'
+      preLoaderRoute: typeof ClientesClienteIdRouteImport
+      parentRoute: typeof ClientesRoute
+    }
+    '/contratos_/$contratoId': {
+      id: '/contratos_/$contratoId'
+      path: '/contratos/$contratoId'
+      fullPath: '/contratos/$contratoId'
+      preLoaderRoute: typeof ContratosContratoIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/estoque/$': {
+      id: '/estoque/$'
+      path: '/$'
+      fullPath: '/estoque/$'
+      preLoaderRoute: typeof EstoqueSplatRouteImport
+      parentRoute: typeof EstoqueRoute
+    }
+    '/projetos/$projetoId': {
+      id: '/projetos/$projetoId'
+      path: '/$projetoId'
+      fullPath: '/projetos/$projetoId'
+      preLoaderRoute: typeof ProjetosProjetoIdRouteImport
+      parentRoute: typeof ProjetosRoute
+    }
+  }
+}
+
+interface ClientesRouteChildren {
+  ClientesClienteIdRoute: typeof ClientesClienteIdRoute
+}
+
+const ClientesRouteChildren: ClientesRouteChildren = {
+  ClientesClienteIdRoute: ClientesClienteIdRoute,
+}
+
+const ClientesRouteWithChildren = ClientesRoute._addFileChildren(
+  ClientesRouteChildren,
+)
+
+interface EstoqueRouteChildren {
+  EstoqueSplatRoute: typeof EstoqueSplatRoute
+}
+
+const EstoqueRouteChildren: EstoqueRouteChildren = {
+  EstoqueSplatRoute: EstoqueSplatRoute,
+}
+
+const EstoqueRouteWithChildren =
+  EstoqueRoute._addFileChildren(EstoqueRouteChildren)
+
+interface ProjetosRouteChildren {
+  ProjetosProjetoIdRoute: typeof ProjetosProjetoIdRoute
+}
+
+const ProjetosRouteChildren: ProjetosRouteChildren = {
+  ProjetosProjetoIdRoute: ProjetosProjetoIdRoute,
+}
+
+const ProjetosRouteWithChildren = ProjetosRoute._addFileChildren(
+  ProjetosRouteChildren,
+)
+
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AgendaRoute: AgendaRoute,
   AssinaturasRoute: AssinaturasRoute,
   CategoriasRoute: CategoriasRoute,
   CentroDeCustosRoute: CentroDeCustosRoute,
+<<<<<<< HEAD
   ClientesRoute: ClientesRoute,
   CobrancasRoute: CobrancasRoute,
+=======
+  ClientesRoute: ClientesRouteWithChildren,
+  CobrancasRoute: CobrancasRoute,
+  ComercialRoute: ComercialRoute,
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
   ConciliacaoRoute: ConciliacaoRoute,
   ConfiguracoesRoute: ConfiguracoesRoute,
   ContasAPagarRoute: ContasAPagarRoute,
   ContasAReceberRoute: ContasAReceberRoute,
   ContratosRoute: ContratosRoute,
+<<<<<<< HEAD
   DocumentosRoute: DocumentosRoute,
   DreRoute: DreRoute,
+=======
+  CrmRoute: CrmRoute,
+  CustomerSuccessRoute: CustomerSuccessRoute,
+  DesenvolvimentoRoute: DesenvolvimentoRoute,
+  DocumentosRoute: DocumentosRoute,
+  DreRoute: DreRoute,
+  EstoqueRoute: EstoqueRouteWithChildren,
+  FiscalRoute: FiscalRoute,
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
   FluxoDeCaixaRoute: FluxoDeCaixaRoute,
   FornecedoresRoute: FornecedoresRoute,
   IaFinanceiraRoute: IaFinanceiraRoute,
   IndicadoresRoute: IndicadoresRoute,
   IntegracoesRoute: IntegracoesRoute,
   LogsRoute: LogsRoute,
+<<<<<<< HEAD
   PermissoesRoute: PermissoesRoute,
   ProdutosRoute: ProdutosRoute,
   ProjetosRoute: ProjetosRoute,
   RelatoriosRoute: RelatoriosRoute,
   UsuariosRoute: UsuariosRoute,
+=======
+  MarketingRoute: MarketingRoute,
+  NotificacoesRoute: NotificacoesRoute,
+  PermissoesRoute: PermissoesRoute,
+  ProdutosRoute: ProdutosRoute,
+  ProjetosRoute: ProjetosRouteWithChildren,
+  RelatoriosRoute: RelatoriosRoute,
+  RhRoute: RhRoute,
+  SuporteRoute: SuporteRoute,
+  UsuariosRoute: UsuariosRoute,
+  CentroDeCustosCentroIdRoute: CentroDeCustosCentroIdRoute,
+  ContratosContratoIdRoute: ContratosContratoIdRoute,
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

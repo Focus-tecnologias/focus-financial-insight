@@ -1,0 +1,79 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { FiscalDashboard } from "@/features/fiscal/components/FiscalDashboard";
+import { DocumentosFiscaisTable } from "@/features/fiscal/components/DocumentosFiscaisTable";
+import { ImportacaoDocumentosModal } from "@/features/fiscal/components/ImportacaoDocumentosModal";
+import { DocumentoFiscalSheet } from "@/features/fiscal/components/DocumentoFiscalSheet";
+import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PieChart, List, FileCheck2, ShieldCheck } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { DocumentoFiscal } from "@/features/fiscal/types";
+
+export const Route = createFileRoute("/fiscal")({
+  component: RouteComponent,
+});
+
+function RouteComponent() {
+  const [importOpen, setImportOpen] = useState(false);
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const [editingDoc, setEditingDoc] = useState<DocumentoFiscal | null>(null);
+
+  const handleNewClick = () => {
+    setEditingDoc(null);
+    setSheetOpen(true);
+  };
+
+  const handleEditClick = (doc: DocumentoFiscal) => {
+    setEditingDoc(doc);
+    setSheetOpen(true);
+  };
+
+  return (
+    <div className="flex-1 space-y-6 p-8 pt-6 animate-fade-in">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-600 flex items-center justify-center shadow-sm">
+            <FileCheck2 className="w-6 h-6" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <h2 className="text-3xl font-bold tracking-tight">Central Fiscal & Tributária</h2>
+              <Badge variant="outline" className="border-orange-500/40 text-orange-600 font-semibold gap-1 bg-orange-50 dark:bg-orange-950/40">
+                <ShieldCheck className="w-3.5 h-3.5" /> Direct DMS Integration
+              </Badge>
+            </div>
+            <p className="text-muted-foreground mt-1 text-sm">
+              Gestão centralizada de notas fiscais (NFS-e, NF-e), apuração de impostos e sincronização automática de arquivos no DMS.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <Tabs defaultValue="listagem" className="space-y-4">
+        <TabsList className="bg-muted/50 p-1">
+          <TabsTrigger value="listagem" className="gap-2"><List className="w-4 h-4" /> Diretório de Documentos Fiscais</TabsTrigger>
+          <TabsTrigger value="dashboard" className="gap-2"><PieChart className="w-4 h-4" /> Monitor Tributário (Dashboard)</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="listagem" className="space-y-4 outline-none">
+          <DocumentosFiscaisTable 
+            onImportClick={() => setImportOpen(true)}
+            onNewClick={handleNewClick}
+            onEditClick={handleEditClick}
+          />
+        </TabsContent>
+
+        <TabsContent value="dashboard" className="space-y-4 outline-none">
+          <FiscalDashboard />
+        </TabsContent>
+      </Tabs>
+
+      <ImportacaoDocumentosModal open={importOpen} onOpenChange={setImportOpen} />
+      <DocumentoFiscalSheet 
+        open={sheetOpen} 
+        onOpenChange={setSheetOpen} 
+        documentoParaEditar={editingDoc}
+      />
+    </div>
+  );
+}

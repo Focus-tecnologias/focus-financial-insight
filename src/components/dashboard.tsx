@@ -1,3 +1,4 @@
+import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,6 +16,7 @@ import {
   Target,
   MoreHorizontal,
   Download,
+  Plus,
 } from "lucide-react";
 import {
   Area,
@@ -33,65 +35,15 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { useLocalStorageState } from "@/hooks/useDataStore";
+import { TituloReceber } from "@/features/contas-receber/types";
+import { ContaPagar } from "@/features/contas-pagar/types";
+import { Cliente } from "@/features/clientes/types";
+import { Contrato } from "@/features/contratos/types";
+import { NovoRecebimentoSheet } from "@/features/contas-receber/components/NovoRecebimentoSheet";
 
 const currency = (v: number) =>
-  v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
-
-const cashflow = [
-  { m: "Jan", entradas: 182000, saidas: 118000 },
-  { m: "Fev", entradas: 205000, saidas: 132000 },
-  { m: "Mar", entradas: 221000, saidas: 141000 },
-  { m: "Abr", entradas: 198000, saidas: 152000 },
-  { m: "Mai", entradas: 244000, saidas: 149000 },
-  { m: "Jun", entradas: 276000, saidas: 168000 },
-  { m: "Jul", entradas: 289000, saidas: 172000 },
-  { m: "Ago", entradas: 312000, saidas: 181000 },
-  { m: "Set", entradas: 298000, saidas: 189000 },
-  { m: "Out", entradas: 334000, saidas: 195000 },
-  { m: "Nov", entradas: 356000, saidas: 203000 },
-  { m: "Dez", entradas: 381000, saidas: 214000 },
-];
-
-const revenueByCategory = [
-  { name: "Mensalidades", value: 184000 },
-  { name: "Implantação", value: 62000 },
-  { name: "Consultoria", value: 41000 },
-  { name: "Suporte", value: 28000 },
-  { name: "Licenças", value: 21000 },
-];
-
-const expensesByCenter = [
-  { name: "Tecnologia", value: 68000 },
-  { name: "Marketing", value: 42000 },
-  { name: "Comercial", value: 34000 },
-  { name: "Administrativo", value: 27000 },
-  { name: "Cloud", value: 22000 },
-  { name: "RH", value: 18000 },
-];
-
-const mrr = [
-  { m: "Jan", v: 128000 },
-  { m: "Fev", v: 136000 },
-  { m: "Mar", v: 142000 },
-  { m: "Abr", v: 149000 },
-  { m: "Mai", v: 158000 },
-  { m: "Jun", v: 167000 },
-  { m: "Jul", v: 178000 },
-  { m: "Ago", v: 189000 },
-  { m: "Set", v: 194000 },
-  { m: "Out", v: 208000 },
-  { m: "Nov", v: 219000 },
-  { m: "Dez", v: 231000 },
-];
-
-const upcoming = [
-  { cliente: "Nexora Sistemas", valor: 14800, venc: "22/07", status: "Em dia" },
-  { cliente: "Alvorada Log.", valor: 8900, venc: "23/07", status: "Em dia" },
-  { cliente: "MedPlus Saúde", valor: 21200, venc: "24/07", status: "Atrasado" },
-  { cliente: "Trilha Educação", valor: 5400, venc: "26/07", status: "Em dia" },
-  { cliente: "Ponto Verde Coop.", valor: 12300, venc: "28/07", status: "Em dia" },
-  { cliente: "Astra Indústria", valor: 33500, venc: "30/07", status: "Renegociado" },
-];
+  v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 2 });
 
 const chartColors = [
   "var(--color-chart-1)",
@@ -114,12 +66,12 @@ function StatCard({ label, value, delta, hint, icon: Icon, accent = "primary" }:
   const up = delta >= 0;
   const accentClass =
     accent === "success"
-      ? "bg-success/10 text-success"
+      ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-400"
       : accent === "destructive"
-      ? "bg-destructive/10 text-destructive"
+      ? "bg-rose-100 text-rose-800 dark:bg-rose-950/30 dark:text-rose-400"
       : accent === "muted"
       ? "bg-muted text-muted-foreground"
-      : "bg-accent text-primary";
+      : "bg-primary/10 text-primary";
 
   return (
     <Card className="group relative overflow-hidden transition-shadow hover:shadow-md">
@@ -138,7 +90,7 @@ function StatCard({ label, value, delta, hint, icon: Icon, accent = "primary" }:
         <div className="mt-4 flex items-center gap-2 text-xs">
           <span
             className={`inline-flex items-center gap-0.5 rounded-md px-1.5 py-0.5 font-medium ${
-              up ? "bg-success/10 text-success" : "bg-destructive/10 text-destructive"
+              up ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400" : "bg-rose-100 text-rose-700 dark:bg-rose-950/40 dark:text-rose-400"
             }`}
           >
             {up ? <ArrowUpRight className="h-3 w-3" /> : <ArrowDownRight className="h-3 w-3" />}
@@ -152,37 +104,93 @@ function StatCard({ label, value, delta, hint, icon: Icon, accent = "primary" }:
 }
 
 export function Dashboard() {
+  const { data: contasReceber } = useLocalStorageState<TituloReceber>("focus_contas_receber");
+  const { data: contasPagar } = useLocalStorageState<ContaPagar>("focus_contas_pagar");
+  const { data: clientes } = useLocalStorageState<Cliente>("focus_clientes");
+  const { data: contratos } = useLocalStorageState<Contrato>("focus_contratos");
+
+  // Cálculos dinâmicos
+  const totalRecebido = contasReceber.reduce((acc, c) => acc + (c.valorRecebido || 0), 0);
+  const totalPago = contasPagar.reduce((acc, c) => acc + (c.valorPago || 0), 0);
+  const saldoEmCaixa = totalRecebido - totalPago;
+
+  const receitasDoMes = contasReceber.reduce((acc, c) => acc + (c.valorOriginal || 0), 0);
+  const despesasDoMes = contasPagar.reduce((acc, c) => acc + (c.valorOriginal || 0), 0);
+  const lucroLiquido = receitasDoMes - despesasDoMes;
+
+  const mrr = contratos.reduce((acc, c) => acc + (c.valorMensalidade || 0), 0);
+  const arr = mrr * 12;
+  const clientesAtivosCount = clientes.length;
+
+  const titulosEmAberto = contasReceber.filter((c) => c.status !== "Recebido");
+  const valorEmAberto = titulosEmAberto.reduce((acc, c) => acc + (c.saldo || 0), 0);
+  const percentualInadimplencia = receitasDoMes > 0 ? ((valorEmAberto / receitasDoMes) * 100).toFixed(1) : "0.0";
+
+  // Próximos recebimentos pendentes
+  const proximosRecebimentos = titulosEmAberto.slice(0, 6);
+
+  // Agrupamento por Categoria para Receita
+  const catMapReceita: Record<string, number> = {};
+  contasReceber.forEach((c) => {
+    const cat = c.categoria || "Geral";
+    catMapReceita[cat] = (catMapReceita[cat] || 0) + c.valorOriginal;
+  });
+  const revenueByCategory = Object.keys(catMapReceita).length > 0
+    ? Object.entries(catMapReceita).map(([name, value]) => ({ name, value }))
+    : [{ name: "Sem receitas", value: 0 }];
+
+  // Agrupamento por Categoria para Despesas
+  const catMapDespesa: Record<string, number> = {};
+  contasPagar.forEach((c) => {
+    const cat = c.categoria || "Operacional";
+    catMapDespesa[cat] = (catMapDespesa[cat] || 0) + c.valorOriginal;
+  });
+  const expensesByCenter = Object.keys(catMapDespesa).length > 0
+    ? Object.entries(catMapDespesa).map(([name, value]) => ({ name, value }))
+    : [{ name: "Sem despesas", value: 0 }];
+
+  // Dados do gráfico de Fluxo de Caixa (Dynamic)
+  const cashflowData = [
+    { m: "Mês Atual", entradas: receitasDoMes, saidas: despesasDoMes },
+  ];
+
+  // Dados de MRR (Dynamic)
+  const mrrData = [
+    { m: "Mês Atual", v: mrr }
+  ];
+
   return (
-    <div className="space-y-6 p-6 lg:p-8">
+    <div className="space-y-6 p-6 lg:p-8 animate-fade-in">
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wider text-primary">
-            Focus Finance · Executivo
-          </p>
           <h1 className="mt-1 text-3xl font-semibold tracking-tight">Dashboard</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Visão consolidada do desempenho financeiro da Focus Tecnologia — julho/2026.
+            Visão consolidada em tempo real do desempenho financeiro da Focus Tecnologia.
           </p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm">
             <Download className="mr-2 h-4 w-4" /> Exportar
           </Button>
-          <Button size="sm">Novo lançamento</Button>
+          <NovoRecebimentoSheet>
+            <Button size="sm">
+              <Plus className="mr-2 h-4 w-4" /> Novo Recebimento
+            </Button>
+          </NovoRecebimentoSheet>
         </div>
       </div>
 
       {/* KPI grid */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard label="Saldo em caixa" value={currency(1284530)} delta={8.4} hint="vs. mês anterior" icon={Wallet} />
-        <StatCard label="Receitas do mês" value={currency(381200)} delta={12.6} hint="MRR + serviços" icon={TrendingUp} accent="success" />
-        <StatCard label="Despesas do mês" value={currency(214800)} delta={4.1} hint="acima do orçado" icon={TrendingDown} accent="destructive" />
-        <StatCard label="Lucro líquido" value={currency(166400)} delta={18.2} hint="margem 43,6%" icon={PiggyBank} accent="success" />
-        <StatCard label="MRR" value={currency(231000)} delta={5.9} hint="ARR: R$ 2,77M" icon={Repeat} />
-        <StatCard label="Clientes ativos" value="182" delta={3.4} hint="8 novos no mês" icon={Users} />
-        <StatCard label="Inadimplência" value="4,2%" delta={-1.1} hint="R$ 48,3k em aberto" icon={AlertTriangle} accent="destructive" />
-        <StatCard label="Meta de faturamento" value="78%" delta={6.0} hint="R$ 4,2M / R$ 5,4M" icon={Target} accent="muted" />
+        <StatCard label="Saldo em caixa" value={currency(saldoEmCaixa)} delta={0} hint="entradas - saídas" icon={Wallet} />
+        <StatCard label="Receitas do mês" value={currency(receitasDoMes)} delta={0} hint="títulos previstos" icon={TrendingUp} accent="success" />
+        <StatCard label="Despesas do mês" value={currency(despesasDoMes)} delta={0} hint="contas a pagar" icon={TrendingDown} accent="destructive" />
+        <StatCard label="Lucro líquido" value={currency(lucroLiquido)} delta={0} hint="receitas - despesas" icon={PiggyBank} accent={lucroLiquido >= 0 ? "success" : "destructive"} />
+        <StatCard label="MRR" value={currency(mrr)} delta={0} hint={`ARR: ${currency(arr)}`} icon={Repeat} />
+        <StatCard label="Clientes ativos" value={String(clientesAtivosCount)} delta={0} hint="base cadastrada" icon={Users} />
+        <StatCard label="Inadimplência" value={`${percentualInadimplencia}%`} delta={0} hint={`${currency(valorEmAberto)} em aberto`} icon={AlertTriangle} accent="destructive" />
+        <StatCard label="Meta de faturamento" value={receitasDoMes > 0 ? "100%" : "0%"} delta={0} hint="acompanhamento em tempo real" icon={Target} accent="muted" />
       </div>
 
       {/* Charts row 1 */}
@@ -191,7 +199,7 @@ export function Dashboard() {
           <CardHeader className="flex flex-row items-start justify-between space-y-0">
             <div>
               <CardTitle className="text-base">Fluxo de caixa</CardTitle>
-              <CardDescription>Entradas vs saídas nos últimos 12 meses</CardDescription>
+              <CardDescription>Entradas vs Saídas registradas</CardDescription>
             </div>
             <div className="flex items-center gap-3 text-xs">
               <span className="flex items-center gap-1.5">
@@ -204,7 +212,7 @@ export function Dashboard() {
           </CardHeader>
           <CardContent className="h-[300px] pl-1">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={cashflow} margin={{ top: 6, right: 12, left: 0, bottom: 0 }}>
+              <AreaChart data={cashflowData} margin={{ top: 6, right: 12, left: 0, bottom: 0 }}>
                 <defs>
                   <linearGradient id="gEnt" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="var(--color-primary)" stopOpacity={0.35} />
@@ -217,7 +225,7 @@ export function Dashboard() {
                 </defs>
                 <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="var(--color-border)" />
                 <XAxis dataKey="m" tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }} />
-                <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
+                <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }} tickFormatter={(v) => `R$${v}`} />
                 <Tooltip
                   cursor={{ stroke: "var(--color-border)" }}
                   contentStyle={{ background: "var(--color-card)", border: "1px solid var(--color-border)", borderRadius: 10, fontSize: 12 }}
@@ -234,7 +242,7 @@ export function Dashboard() {
           <CardHeader className="flex flex-row items-start justify-between space-y-0">
             <div>
               <CardTitle className="text-base">Receita por categoria</CardTitle>
-              <CardDescription>Composição do faturamento</CardDescription>
+              <CardDescription>Composição do faturamento real</CardDescription>
             </div>
             <Button variant="ghost" size="icon" className="h-7 w-7">
               <MoreHorizontal className="h-4 w-4" />
@@ -277,14 +285,14 @@ export function Dashboard() {
         <Card>
           <CardHeader>
             <CardTitle className="text-base">MRR — Receita recorrente</CardTitle>
-            <CardDescription>Evolução mensal</CardDescription>
+            <CardDescription>Contratos ativos</CardDescription>
           </CardHeader>
           <CardContent className="h-[240px] pl-1">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={mrr} margin={{ top: 6, right: 12, left: 0, bottom: 0 }}>
+              <LineChart data={mrrData} margin={{ top: 6, right: 12, left: 0, bottom: 0 }}>
                 <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="var(--color-border)" />
                 <XAxis dataKey="m" tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }} />
-                <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
+                <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }} tickFormatter={(v) => `R$${v}`} />
                 <Tooltip
                   contentStyle={{ background: "var(--color-card)", border: "1px solid var(--color-border)", borderRadius: 10, fontSize: 12 }}
                   formatter={(v: number) => currency(v)}
@@ -298,8 +306,8 @@ export function Dashboard() {
         <Card className="lg:col-span-2">
           <CardHeader className="flex flex-row items-start justify-between space-y-0">
             <div>
-              <CardTitle className="text-base">Despesas por centro de custo</CardTitle>
-              <CardDescription>Distribuição no mês corrente</CardDescription>
+              <CardTitle className="text-base">Despesas por categoria</CardTitle>
+              <CardDescription>Distribuição de contas a pagar</CardDescription>
             </div>
           </CardHeader>
           <CardContent className="h-[240px] pl-1">
@@ -307,7 +315,7 @@ export function Dashboard() {
               <BarChart data={expensesByCenter} margin={{ top: 6, right: 12, left: 0, bottom: 0 }}>
                 <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="var(--color-border)" />
                 <XAxis dataKey="name" tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }} />
-                <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
+                <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }} tickFormatter={(v) => `R$${v}`} />
                 <Tooltip
                   cursor={{ fill: "var(--color-muted)" }}
                   contentStyle={{ background: "var(--color-card)", border: "1px solid var(--color-border)", borderRadius: 10, fontSize: 12 }}
@@ -326,69 +334,72 @@ export function Dashboard() {
           <CardHeader className="flex flex-row items-start justify-between space-y-0">
             <div>
               <CardTitle className="text-base">Próximos recebimentos</CardTitle>
-              <CardDescription>Contas a receber nos próximos 15 dias</CardDescription>
+              <CardDescription>Títulos pendentes no sistema</CardDescription>
             </div>
-            <Button size="sm" variant="outline">Ver todos</Button>
           </CardHeader>
           <CardContent className="p-0">
-            <div className="divide-y">
-              {upcoming.map((r) => {
-                const variant =
-                  r.status === "Atrasado"
-                    ? "bg-destructive/10 text-destructive"
-                    : r.status === "Renegociado"
-                    ? "bg-warning/20 text-warning-foreground"
-                    : "bg-success/10 text-success";
-                return (
-                  <div key={r.cliente} className="flex items-center justify-between gap-3 px-6 py-3.5">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-muted text-xs font-semibold">
-                        {r.cliente
-                          .split(" ")
-                          .map((w) => w[0])
-                          .slice(0, 2)
-                          .join("")}
+            {proximosRecebimentos.length === 0 ? (
+              <div className="p-8 text-center text-sm text-muted-foreground">
+                Nenhum recebimento pendente cadastrado.
+              </div>
+            ) : (
+              <div className="divide-y">
+                {proximosRecebimentos.map((r) => {
+                  const variant =
+                    r.status === "Atrasado"
+                      ? "bg-rose-100 text-rose-800 dark:bg-rose-950/40 dark:text-rose-400"
+                      : "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-400";
+                  return (
+                    <div key={r.id} className="flex items-center justify-between gap-3 px-6 py-3.5">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-muted text-xs font-semibold">
+                          {(r.cliente || "C")
+                            .split(" ")
+                            .map((w) => w[0])
+                            .slice(0, 2)
+                            .join("")}
+                        </div>
+                        <div className="min-w-0">
+                          <p className="truncate text-sm font-medium">{r.cliente}</p>
+                          <p className="text-xs text-muted-foreground">{r.descricao} · Vence em {r.dataVencimento}</p>
+                        </div>
                       </div>
-                      <div className="min-w-0">
-                        <p className="truncate text-sm font-medium">{r.cliente}</p>
-                        <p className="text-xs text-muted-foreground">Vence em {r.venc}</p>
+                      <div className="flex items-center gap-3">
+                        <Badge variant="secondary" className={`${variant} border-0 text-[10px] font-medium`}>
+                          {r.status}
+                        </Badge>
+                        <span className="w-24 text-right text-sm font-semibold tabular-nums">
+                          {currency(r.saldo || r.valorOriginal)}
+                        </span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <Badge variant="secondary" className={`${variant} border-0 text-[10px] font-medium`}>
-                        {r.status}
-                      </Badge>
-                      <span className="w-24 text-right text-sm font-semibold tabular-nums">
-                        {currency(r.valor)}
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Metas do trimestre</CardTitle>
-            <CardDescription>Q3 · Focus Tecnologia</CardDescription>
+            <CardTitle className="text-base">Resumo de Atividades</CardTitle>
+            <CardDescription>Cadastros no sistema</CardDescription>
           </CardHeader>
           <CardContent className="space-y-5">
             {[
-              { label: "Faturamento", pct: 78, cur: "R$ 4,2M", tot: "R$ 5,4M" },
-              { label: "Novos contratos", pct: 62, cur: "31", tot: "50" },
-              { label: "Margem operacional", pct: 91, cur: "41%", tot: "45%" },
-              { label: "Redução de custos", pct: 44, cur: "R$ 88k", tot: "R$ 200k" },
+              { label: "Clientes Cadastrados", count: clientes.length },
+              { label: "Contratos Vigentes", count: contratos.length },
+              { label: "Contas a Pagar", count: contasPagar.length },
+              { label: "Contas a Receber", count: contasReceber.length },
             ].map((g) => (
               <div key={g.label} className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
                   <span className="font-medium">{g.label}</span>
-                  <span className="tabular-nums text-muted-foreground">
-                    {g.cur} <span className="text-muted-foreground/60">/ {g.tot}</span>
+                  <span className="tabular-nums font-bold text-primary">
+                    {g.count}
                   </span>
                 </div>
-                <Progress value={g.pct} className="h-2" />
+                <Progress value={g.count > 0 ? 100 : 0} className="h-2" />
               </div>
             ))}
           </CardContent>

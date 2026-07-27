@@ -1,0 +1,88 @@
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Webhook, Plus, Play, Trash2 } from 'lucide-react';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+
+export function ConfigWebhooks() {
+  const webhooks = [
+    { id: 1, evento: 'fatura.paga', endpoint: 'https://api.empresa.com/hooks/focus', metodo: 'POST', status: 'Ativo', ultimoStatus: '200 OK', ultimaExec: '2026-07-20T10:15:00' },
+    { id: 2, evento: 'cliente.criado', endpoint: 'https://crm.empresa.com/sync', metodo: 'POST', status: 'Ativo', ultimoStatus: '201 Created', ultimaExec: '2026-07-19T14:22:00' },
+    { id: 3, evento: 'contrato.vencido', endpoint: 'https://zap.webhook.com/x992', metodo: 'POST', status: 'Falha', ultimoStatus: '500 Server Error', ultimaExec: '2026-07-20T08:00:00' }
+  ];
+
+  return (
+    <div className="space-y-6 animate-fade-in">
+      <div className="flex justify-between items-center">
+        <div>
+          <h2 className="text-2xl font-bold tracking-tight">Webhooks</h2>
+          <p className="text-muted-foreground mt-1">Notifique sistemas externos automaticamente quando eventos ocorrerem no ERP.</p>
+        </div>
+        <Button className="gap-2">
+          <Plus className="w-4 h-4" /> Novo Webhook
+        </Button>
+      </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Webhook className="w-5 h-5 text-primary" /> Endpoints Cadastrados</CardTitle>
+          <CardDescription>O sistema fará requisições HTTP para as URLs cadastradas nos eventos especificados.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="border rounded-lg overflow-hidden">
+            <Table>
+              <TableHeader className="bg-muted/50">
+                <TableRow>
+                  <TableHead>Evento</TableHead>
+                  <TableHead>Método</TableHead>
+                  <TableHead>URL de Destino</TableHead>
+                  <TableHead>Última Execução</TableHead>
+                  <TableHead>Status HTTP</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead className="w-[100px]"></TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {webhooks.map((hook) => (
+                  <TableRow key={hook.id} className="hover:bg-muted/20">
+                    <TableCell className="font-medium">
+                      <Badge variant="secondary" className="font-mono text-xs">{hook.evento}</Badge>
+                    </TableCell>
+                    <TableCell>
+                      <span className="text-xs font-bold text-blue-600 dark:text-blue-400">{hook.metodo}</span>
+                    </TableCell>
+                    <TableCell>
+                      <code className="text-xs font-mono text-muted-foreground truncate block max-w-[200px] xl:max-w-[300px]">{hook.endpoint}</code>
+                    </TableCell>
+                    <TableCell className="text-sm text-muted-foreground">{new Date(hook.ultimaExec).toLocaleString('pt-BR')}</TableCell>
+                    <TableCell>
+                      <Badge variant="outline" className={hook.ultimoStatus.includes('20') ? 'border-emerald-200 text-emerald-700 bg-emerald-50 dark:border-emerald-900/50 dark:bg-emerald-950/30 dark:text-emerald-400' : 'border-rose-200 text-rose-700 bg-rose-50 dark:border-rose-900/50 dark:bg-rose-950/30 dark:text-rose-400'}>
+                        {hook.ultimoStatus}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <Badge variant="outline" className={hook.status === 'Ativo' ? 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20' : 'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-500/10 dark:text-rose-400 dark:border-rose-500/20'}>
+                        {hook.status}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex items-center justify-end gap-1">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-blue-500" title="Testar Webhook">
+                          <Play className="w-4 h-4" />
+                        </Button>
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-rose-500">
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}

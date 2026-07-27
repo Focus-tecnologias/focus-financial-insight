@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+<<<<<<< HEAD
 
 export const Route = createFileRoute("/produtos")({
   head: () => ({
@@ -11,10 +12,16 @@ export const Route = createFileRoute("/produtos")({
       },
     ],
   }),
+=======
+import { ProdutosScreen } from "@/features/produtos/components/ProdutosScreen";
+
+export const Route = createFileRoute("/produtos")({
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
   component: ProdutosPage,
 });
 
 function ProdutosPage() {
+<<<<<<< HEAD
   const products = [
     {
       id: 1,
@@ -205,4 +212,7 @@ function ProdutosPage() {
       </div>
     </div>
   );
+=======
+  return <ProdutosScreen />;
+>>>>>>> 8db603b (Integrate Supabase backend for full app persistence and replace local storage hook)
 }
