@@ -165,20 +165,12 @@ export function AppSidebar() {
   return (
     <>
       <Sidebar collapsible="icon">
-        <SidebarHeader className="border-b border-[#ECECEC] dark:border-sidebar-border pt-[20px] pb-[18px] pl-[20px] pr-[20px] group-data-[collapsible=icon]:h-14 group-data-[collapsible=icon]:p-0 group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:items-center group-data-[collapsible=icon]:justify-center transition-all duration-300">
-          <Link to="/" className="flex items-center group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:items-center w-full">
-            {/* Logo Completa - Sidebar Expandida */}
+        <SidebarHeader className="border-b border-sidebar-border p-3">
+          <Link to="/" className="flex items-center gap-2 px-1 py-1">
             <img
               src={focusLogo}
               alt="Focus ERP — powered by focus tech"
-              className="h-10 w-auto max-w-full object-contain object-left transition-all duration-300 group-data-[collapsible=icon]:hidden block dark:invert dark:hue-rotate-180"
-            />
-            {/* Símbolo Focus - Sidebar Recolhida */}
-            <img
-              src={focusLogo}
-              alt="Focus ERP"
-              className="h-6 w-6 object-cover transition-all duration-300 hidden group-data-[collapsible=icon]:block shrink-0 dark:invert dark:hue-rotate-180"
-              style={{ objectPosition: "left center" }}
+              className="h-9 w-auto object-contain transition-all duration-200 group-data-[collapsible=icon]:h-7"
             />
           </Link>
         </SidebarHeader>
